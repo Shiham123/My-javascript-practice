@@ -94,3 +94,11 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+.text-msg,
+.email-msg,
+.date-msg,
+.desc-msg {
+  color: red;
+  display: flex;
+}

@@ -33,6 +33,7 @@
         <h1>task view</h1>
         <div
           class="add-task"
+          id="add-task"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
@@ -40,7 +41,7 @@
           <i class="fa-solid fa-thumbtack"></i>
         </div>
 
-        <form action="" class="form">
+        <form action="" class="form" id="form">
           <!-- Modal -->
           <div
             class="modal fade"
@@ -63,21 +64,24 @@
                   ></button>
                 </div>
                 <div class="modal-body">
-                  <label for="" id="name" class="display">Name</label>
-                  <input type="text" id="name" class="display" />
+                  <label for="" class="display">Name</label>
+                  <div class="text-msg" id="text-msg"></div>
+                  <input type="text" id="text" class="display" />
                   <br /><br />
 
-                  <label for="" id="email" class="display">Email</label>
+                  <label for="" class="display">Email</label>
+                  <div class="email-msg" id="email-msg"></div>
                   <input type="email" id="email" class="display" />
                   <br /><br />
 
-                  <label for="" id="date" class="display">Date</label>
-                  <input type="date" class="display" />
+                  <label for="" class="display">Date</label>
+                  <div class="date-msg" id="date-msg"></div>
+                  <input type="date" id="date" class="display" />
                   <br /><br />
 
-                  <label for="" id="desc" class="display">Description</label>
+                  <label for="" class="display">Description</label>
+                  <div class="desc-msg" id="desc-msg"></div>
                   <textarea
-                    name=""
                     id="desc"
                     cols="30"
                     rows="5"
@@ -93,7 +97,7 @@
                   >
                     Close
                   </button>
-                  <button type="button" class="btn btn-primary">
+                  <button type="submit" id="addTask" class="btn btn-primary">
                     Add Task
                   </button>
                 </div>
