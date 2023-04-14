@@ -89,3 +89,8 @@ body {
 .icon > i {
   cursor: pointer;
 }
+
+.display {
+  display: flex;
+  justify-content: space-between;
+}
