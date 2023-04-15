@@ -75,7 +75,7 @@ body {
   border-radius: 12px;
 }
 
-.task > p:nth-child(2) {
+.task > p:nth-child(3) {
   color: rgba(0, 0, 0, 0.521);
 }
 

@@ -11,12 +11,15 @@ const textMsgEl = document.getElementById('text-msg'),
   dateMsgEl = document.getElementById('date-msg'),
   descMsgEl = document.getElementById('desc-msg');
 
-const addButtonEl = document.getElementById('addTask');
+const addButtonEl = document.getElementById('addTask'),
+  tasksEl = document.getElementById('tasks');
 
 formEl.addEventListener('submit', (e) => {
   e.preventDefault();
   formValidation();
 });
+
+let storeData = {};
 
 function formValidation() {
   textEl.value !== ''
@@ -41,9 +44,47 @@ function formValidation() {
     dateEl.value !== '' &&
     descEl.value !== ''
   ) {
+    acceptData();
     addButtonEl.setAttribute('data-bs-dismiss', 'modal');
     addButtonEl.click();
   } else {
     console.log('nothing');
   }
+}
+
+function acceptData() {
+  storeData['text'] = textEl.value;
+  storeData['email'] = emailEl.value;
+  storeData['date'] = dateEl.value;
+  storeData['desc'] = descEl.value;
+  showData();
+}
+
+function showData() {
+  tasksEl.innerHTML = `
+  <div class="task">
+    <p>Name : ${storeData.text}</p>
+    <p>Email : ${storeData.email}</p>
+    <p>Date : ${storeData.date}</p>
+    <p>Description : ${storeData.desc}</p>
+      <div class="icon">
+        <i onclick="deleteTask(this)" class="fa-solid fa-trash-can"></i>
+        <i onclick="editTask(this)" class="fa-solid fa-file-pen"></i>
+      </div>
+  </div>
+  `;
+  resetForm();
+}
+
+function deleteTask(e) {
+  e.parentElement.parentElement.remove();
+}
+
+function editTask(e) {}
+
+function resetForm() {
+  textEl.value = '';
+  emailEl.value = '';
+  dateEl.value = '';
+  descEl.value = '';
 }
