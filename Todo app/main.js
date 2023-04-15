@@ -47,6 +47,10 @@ function formValidation() {
     acceptData();
     addButtonEl.setAttribute('data-bs-dismiss', 'modal');
     addButtonEl.click();
+
+    (() => {
+      addButtonEl.setAttribute('data-bs-dismiss', '');
+    })();
   } else {
     console.log('nothing');
   }
@@ -60,6 +64,7 @@ function acceptData() {
     desc: descEl.value,
   });
   showData();
+  localStorage.setItem('data', JSON.stringify(storeData));
 }
 
 function showData() {
@@ -68,13 +73,13 @@ function showData() {
     let { text, email, date, desc } = task;
     return (tasksEl.innerHTML += `
     <div class="task" id="${index}">
-    <p>Name : ${text}</p>
-    <p>Email : ${email}</p>
-    <p>Date : ${date}</p>
-    <p>Description : ${desc}</p>
+    <p>${text}</p>
+    <p>${email}</p>
+    <p>${date}</p>
+    <p>${desc}</p>
       <div class="icon">
-        <i onclick="deleteTask(this)" class="fa-solid fa-trash-can"></i>
-        <i onclick="editTask(this)" class="fa-solid fa-file-pen"></i>
+        <i onclick="deleteTask(this); showData()"  class="fa-solid fa-trash-can"></i>
+        <i onclick="editTask(this)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="fa-solid fa-file-pen"></i>
       </div>
   </div>
     `);
@@ -84,9 +89,20 @@ function showData() {
 
 function deleteTask(e) {
   e.parentElement.parentElement.remove();
+  storeData.splice(e.parentElement.parentElement.id, 1);
+  localStorage.setItem('data', JSON.stringify(storeData));
 }
 
-function editTask(e) {}
+function editTask(e) {
+  let selectedTask = e.parentElement.parentElement;
+
+  textEl.value = selectedTask.children[0].innerHTML;
+  emailEl.value = selectedTask.children[1].innerHTML;
+  dateEl.value = selectedTask.children[2].innerHTML;
+  descEl.value = selectedTask.children[3].innerHTML;
+
+  deleteTask(e);
+}
 
 function resetForm() {
   textEl.value = '';
@@ -94,3 +110,8 @@ function resetForm() {
   dateEl.value = '';
   descEl.value = '';
 }
+
+(() => {
+  storeData = JSON.parse(localStorage.getItem('data')) || [];
+  showData();
+})();
