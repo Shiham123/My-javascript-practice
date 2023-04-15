@@ -19,7 +19,7 @@ formEl.addEventListener('submit', (e) => {
   formValidation();
 });
 
-let storeData = {};
+let storeData = [];
 
 function formValidation() {
   textEl.value !== ''
@@ -53,26 +53,32 @@ function formValidation() {
 }
 
 function acceptData() {
-  storeData['text'] = textEl.value;
-  storeData['email'] = emailEl.value;
-  storeData['date'] = dateEl.value;
-  storeData['desc'] = descEl.value;
+  storeData.push({
+    text: textEl.value,
+    email: emailEl.value,
+    date: dateEl.value,
+    desc: descEl.value,
+  });
   showData();
 }
 
 function showData() {
-  tasksEl.innerHTML = `
-  <div class="task">
-    <p>Name : ${storeData.text}</p>
-    <p>Email : ${storeData.email}</p>
-    <p>Date : ${storeData.date}</p>
-    <p>Description : ${storeData.desc}</p>
+  tasksEl.innerHTML = '';
+  storeData.map((task, index) => {
+    let { text, email, date, desc } = task;
+    return (tasksEl.innerHTML += `
+    <div class="task" id="${index}">
+    <p>Name : ${text}</p>
+    <p>Email : ${email}</p>
+    <p>Date : ${date}</p>
+    <p>Description : ${desc}</p>
       <div class="icon">
         <i onclick="deleteTask(this)" class="fa-solid fa-trash-can"></i>
         <i onclick="editTask(this)" class="fa-solid fa-file-pen"></i>
       </div>
   </div>
-  `;
+    `);
+  });
   resetForm();
 }
 
