@@ -45,6 +45,10 @@ function formValidation() {
     acceptData();
     addTaskEl.setAttribute('data-bs-dismiss', 'modal');
     addTaskEl.click();
+
+    (() => {
+      addTaskEl.setAttribute('data-bs-dismiss', '');
+    })();
   } else {
     console.log('nothing');
   }
@@ -58,6 +62,7 @@ function acceptData() {
     desc: descEl.value,
   });
   createTask();
+  localStorage.setItem('data', JSON.stringify(storeData));
 }
 
 function createTask() {
@@ -71,7 +76,7 @@ function createTask() {
       <p>${date}</p>
       <p>${desc}</p>
       <div class="icon">
-        <i onclick="deleteTask(this)" class="fa-solid fa-trash-can"></i>
+        <i onclick="deleteTask(this); createTask()" class="fa-solid fa-trash-can"></i>
         <i onclick="editTask(this)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="fa-solid fa-file-pen"></i>
       </div>
     </div>
@@ -83,6 +88,7 @@ function createTask() {
 function deleteTask(e) {
   e.parentElement.parentElement.remove();
   storeData.splice(e.parentElement.parentElement.id, 1);
+  localStorage.setItem('data', JSON.stringify(storeData));
 }
 
 function editTask(e) {
@@ -102,3 +108,8 @@ function resetForm() {
   dateEl.value = '';
   descEl.value = '';
 }
+
+(() => {
+  storeData = JSON.parse(localStorage.getItem('data')) || [];
+  createTask();
+})();
