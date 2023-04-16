@@ -57,7 +57,6 @@ function acceptData() {
     date: dateEl.value,
     desc: descEl.value,
   });
-  console.log(storeData);
   createTask();
 }
 
@@ -66,19 +65,35 @@ function createTask() {
   storeData.map((task, index) => {
     let { text, email, date, desc } = task;
     return (tasksEl.innerHTML += `
-		<div class="task">
+		<div id="${index}" class="task">
       <p>${text}</p>
       <p>${email}</p>
       <p>${date}</p>
       <p>${desc}</p>
       <div class="icon">
-        <i class="fa-solid fa-trash-can"></i>
-        <i class="fa-solid fa-file-pen"></i>
+        <i onclick="deleteTask(this)" class="fa-solid fa-trash-can"></i>
+        <i onclick="editTask(this)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="fa-solid fa-file-pen"></i>
       </div>
     </div>
 		`);
   });
   resetForm();
+}
+
+function deleteTask(e) {
+  e.parentElement.parentElement.remove();
+  storeData.splice(e.parentElement.parentElement.id, 1);
+}
+
+function editTask(e) {
+  let selectedTask = e.parentElement.parentElement;
+
+  textEl.value = selectedTask.children[0].innerHTML;
+  emailEl.value = selectedTask.children[1].innerHTML;
+  dateEl.value = selectedTask.children[2].innerHTML;
+  descEl.value = selectedTask.children[3].innerHTML;
+
+  deleteTask(e);
 }
 
 function resetForm() {
