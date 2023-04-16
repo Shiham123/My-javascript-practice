@@ -1,18 +1,16 @@
-const addTaskEl = document.getElementById('add-task'),
-  formEl = document.getElementById('form');
-
-const textEl = document.getElementById('text'),
+const formEl = document.getElementById('form'),
+  textEl = document.getElementById('text'),
   emailEl = document.getElementById('email'),
   dateEl = document.getElementById('date'),
-  descEl = document.getElementById('desc');
+  descEl = document.getElementById('desc'),
+  addTaskEl = document.getElementById('addTask');
 
 const textMsgEl = document.getElementById('text-msg'),
   emailMsgEl = document.getElementById('email-msg'),
   dateMsgEl = document.getElementById('date-msg'),
   descMsgEl = document.getElementById('desc-msg');
 
-const addButtonEl = document.getElementById('addTask'),
-  tasksEl = document.getElementById('tasks');
+const tasksEl = document.getElementById('tasks');
 
 formEl.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -24,19 +22,19 @@ let storeData = [];
 function formValidation() {
   textEl.value !== ''
     ? (textMsgEl.innerHTML = '')
-    : (textMsgEl.innerHTML = 'Please add a text');
+    : (textMsgEl.innerHTML = 'Please add a input');
 
   emailEl.value !== ''
     ? (emailMsgEl.innerHTML = '')
-    : (emailMsgEl.innerHTML = 'Please add a email');
+    : (emailMsgEl.innerHTML = 'Please add your email');
 
   dateEl.value !== ''
     ? (dateMsgEl.innerHTML = '')
-    : (dateMsgEl.innerHTML = 'Please add a date');
+    : (dateMsgEl.innerHTML = 'Please add your date');
 
   descEl.value !== ''
     ? (descMsgEl.innerHTML = '')
-    : (descMsgEl.innerHTML = 'Please add a description');
+    : (descMsgEl.innerHTML = 'Please add a short description');
 
   if (
     textEl.value !== '' &&
@@ -45,12 +43,8 @@ function formValidation() {
     descEl.value !== ''
   ) {
     acceptData();
-    addButtonEl.setAttribute('data-bs-dismiss', 'modal');
-    addButtonEl.click();
-
-    (() => {
-      addButtonEl.setAttribute('data-bs-dismiss', '');
-    })();
+    addTaskEl.setAttribute('data-bs-dismiss', 'modal');
+    addTaskEl.click();
   } else {
     console.log('nothing');
   }
@@ -63,45 +57,28 @@ function acceptData() {
     date: dateEl.value,
     desc: descEl.value,
   });
-  showData();
-  localStorage.setItem('data', JSON.stringify(storeData));
+  console.log(storeData);
+  createTask();
 }
 
-function showData() {
+function createTask() {
   tasksEl.innerHTML = '';
   storeData.map((task, index) => {
     let { text, email, date, desc } = task;
     return (tasksEl.innerHTML += `
-    <div class="task" id="${index}">
-    <p>${text}</p>
-    <p>${email}</p>
-    <p>${date}</p>
-    <p>${desc}</p>
+		<div class="task">
+      <p>${text}</p>
+      <p>${email}</p>
+      <p>${date}</p>
+      <p>${desc}</p>
       <div class="icon">
-        <i onclick="deleteTask(this); showData()"  class="fa-solid fa-trash-can"></i>
-        <i onclick="editTask(this)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="fa-solid fa-file-pen"></i>
+        <i class="fa-solid fa-trash-can"></i>
+        <i class="fa-solid fa-file-pen"></i>
       </div>
-  </div>
-    `);
+    </div>
+		`);
   });
   resetForm();
-}
-
-function deleteTask(e) {
-  e.parentElement.parentElement.remove();
-  storeData.splice(e.parentElement.parentElement.id, 1);
-  localStorage.setItem('data', JSON.stringify(storeData));
-}
-
-function editTask(e) {
-  let selectedTask = e.parentElement.parentElement;
-
-  textEl.value = selectedTask.children[0].innerHTML;
-  emailEl.value = selectedTask.children[1].innerHTML;
-  dateEl.value = selectedTask.children[2].innerHTML;
-  descEl.value = selectedTask.children[3].innerHTML;
-
-  deleteTask(e);
 }
 
 function resetForm() {
@@ -110,8 +87,3 @@ function resetForm() {
   dateEl.value = '';
   descEl.value = '';
 }
-
-(() => {
-  storeData = JSON.parse(localStorage.getItem('data')) || [];
-  showData();
-})();
