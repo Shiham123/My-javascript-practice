@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: none;
+  outline: none;
 }
 
 body {
@@ -16,4 +18,40 @@ body {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  height: 800px;
+  width: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.img {
+  border-bottom: 1px solid black;
+}
+
+.content h1 {
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.content p {
+  font-size: 15px;
+  padding: 10px;
+  line-height: 1.9;
+}
+
+.start-page button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 170px;
+  height: 70px;
+  border-radius: 60px 0px 15px 0px;
+  background-color: rgba(0, 0, 255, 0.349);
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 100;
+  line-height: 1.9;
 }
