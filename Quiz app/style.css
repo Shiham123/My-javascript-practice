@@ -24,9 +24,9 @@ body {
   overflow: hidden;
 }
 
-/* .box-one {
-  display: none;
-} */
+/**
+* ? box one start here
+*/
 
 .img {
   border-bottom: 1px solid black;
@@ -73,6 +73,10 @@ body {
 .box-two {
   display: none;
 }
+
+/**
+* ? box two start here
+*/
 
 .box-two ol {
   margin: 0px 0px 0px 40px;
