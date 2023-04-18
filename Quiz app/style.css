@@ -75,7 +75,8 @@ body {
 }
 
 /**
-* ? box two start here
+* ! box one style end here
+* ? box two style start here
 */
 
 .box-two ol {
@@ -120,4 +121,13 @@ body {
   text-transform: capitalize;
   font-weight: 100;
   line-height: 1.9;
+}
+
+/**
+* ! box two style end here
+* ? box three style start here
+*/
+
+.box-three {
+  display: none;
 }
