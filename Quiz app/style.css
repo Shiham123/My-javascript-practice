@@ -24,6 +24,10 @@ body {
   overflow: hidden;
 }
 
+/* .box-one {
+  display: none;
+} */
+
 .img {
   border-bottom: 1px solid black;
 }
@@ -47,6 +51,64 @@ body {
   width: 170px;
   height: 70px;
   border-radius: 60px 0px 15px 0px;
+  background-color: rgba(0, 0, 255, 0.349);
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 100;
+  line-height: 1.9;
+}
+
+.box-two h1 {
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 1px solid black;
+  margin: 10px 0px;
+  padding: 20px 0px;
+  text-transform: capitalize;
+}
+
+.box-two {
+  display: none;
+}
+
+.box-two ol {
+  margin: 0px 0px 0px 40px;
+  text-transform: capitalize;
+}
+
+.box-two ol li {
+  font-size: 15px;
+  font-weight: 300;
+  padding: 25px 5px;
+  line-height: 2;
+}
+
+.box-two .button button:first-child {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 170px;
+  height: 70px;
+  border-radius: 0px 60px 0px 0px;
+  background-color: rgba(0, 0, 255, 0.349);
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 100;
+  line-height: 1.9;
+}
+
+.box-two .button button:last-child {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 170px;
+  height: 70px;
+  border-radius: 60px 0px 0px 0px;
   background-color: rgba(0, 0, 255, 0.349);
   color: black;
   cursor: pointer;
