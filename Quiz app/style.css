@@ -19,7 +19,7 @@ body {
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   height: 800px;
-  width: 400px;
+  width: 500px;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -32,13 +32,13 @@ body {
   border-bottom: 1px solid black;
 }
 
-.content h1 {
+.box-one .content h1 {
   font-size: 20px;
   padding: 10px;
   margin-top: 5px;
 }
 
-.content p {
+.box-one .content p {
   font-size: 15px;
   padding: 10px;
   line-height: 1.9;
@@ -68,10 +68,6 @@ body {
   margin: 10px 0px;
   padding: 20px 0px;
   text-transform: capitalize;
-}
-
-.box-two {
-  display: none;
 }
 
 /**
@@ -128,6 +124,69 @@ body {
 * ? box three style start here
 */
 
-.box-three {
+.box-two {
   display: none;
+}
+
+.box-one {
+  display: none;
+}
+
+.box-three > h1 {
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 1px solid black;
+  margin: 10px 0px;
+  padding: 20px 0px;
+  text-transform: capitalize;
+}
+
+.box-three .content > h1 {
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 1rem;
+  text-transform: capitalize;
+}
+
+.box-three .content > ol {
+  margin: 0rem 3rem;
+  line-height: 3;
+}
+
+.box-three .content ol > li {
+  font-size: 20px;
+  padding: 1.5rem 1rem;
+  text-transform: capitalize;
+  line-height: 2;
+  word-spacing: 2px;
+  background-color: rgba(241, 208, 208, 0.452);
+  margin: 1rem 0rem;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+}
+
+.box-three > .content > ol > li > span {
+  position: absolute;
+  right: 0;
+  font-size: 22px;
+  padding: 0rem 1rem;
+}
+
+.box-three > .button > button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 170px;
+  height: 70px;
+  border-radius: 60px 0px 0px 0px;
+  background-color: rgba(0, 0, 255, 0.349);
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 100;
+  line-height: 1.9;
 }
