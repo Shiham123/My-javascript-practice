@@ -28,7 +28,7 @@ body {
 * ? box one start here
 */
 
-.img {
+.box-one > .img {
   border-bottom: 1px solid black;
 }
 
@@ -74,6 +74,10 @@ body {
 * ! box one style end here
 * ? box two style start here
 */
+
+.box-two {
+  display: none;
+}
 
 .box-two ol {
   margin: 0px 0px 0px 40px;
@@ -124,11 +128,7 @@ body {
 * ? box three style start here
 */
 
-.box-two {
-  display: none;
-}
-
-.box-one {
+.box-three {
   display: none;
 }
 
@@ -176,6 +176,70 @@ body {
 }
 
 .box-three > .button > button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 170px;
+  height: 70px;
+  border-radius: 60px 0px 0px 0px;
+  background-color: rgba(0, 0, 255, 0.349);
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 100;
+  line-height: 1.9;
+}
+
+/**
+* ! box three style end here
+* ? box four style start here
+*/
+
+.box-four {
+  display: none;
+}
+
+.box-four .content {
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-four > .content > h3:first-child {
+  font-size: 20px;
+  font-weight: 300;
+  padding: 1rem 0rem;
+  text-transform: capitalize;
+}
+
+.box-four > .content > h3:last-child {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 1rem 0rem;
+  text-transform: capitalize;
+}
+
+.box-four > .button > button:first-child {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 170px;
+  height: 70px;
+  border-radius: 0px 60px 0px 0px;
+  background-color: rgba(0, 0, 255, 0.349);
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 100;
+  line-height: 1.9;
+}
+
+.box-four > .button > button:last-child {
   position: absolute;
   bottom: 0;
   right: 0;
