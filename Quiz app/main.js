@@ -7,7 +7,8 @@ const startQuizEl = document.getElementById('start-quiz'),
   boxFourEl = document.getElementById('box-four');
 
 const quizQuestionEl = document.getElementById('quizQuestion'),
-  nextQuizEl = document.getElementById('nextQuiz');
+  nextQuizEl = document.getElementById('nextQuiz'),
+  quitQuizEl = document.getElementById('quitQuiz');
 
 startQuizEl.addEventListener('click', () => {
   boxOneEl.style.display = 'none';
@@ -27,6 +28,10 @@ continueBtnEl.addEventListener('click', () => {
 
 nextQuizEl.addEventListener('click', () => {
   incrementQuiz();
+});
+
+quitQuizEl.addEventListener('click', () => {
+  location.reload();
 });
 
 let currentQuestion = 0;
@@ -53,11 +58,6 @@ function showQuizData() {
   `;
 
   let addIcon = quizQuestionEl.querySelectorAll('li');
-  addIcon.forEach((e) => {
-    e.addEventListener('click', (e) => {
-      console.log(e);
-    });
-  });
 }
 
 showQuizData();
