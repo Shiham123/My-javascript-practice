@@ -1,12 +1,11 @@
-const startQuizEl = document.getElementById('start-quiz'),
-  boxOneEl = document.getElementById('box-one'),
+const boxOneEl = document.getElementById('box-one'),
   boxTwoEl = document.getElementById('box-two'),
-  exitBtnEl = document.getElementById('exitBtn'),
-  continueBtnEl = document.getElementById('continueBtn'),
   boxThreeEl = document.getElementById('box-three'),
   boxFourEl = document.getElementById('box-four');
 
-const quizQuestionEl = document.getElementById('quizQuestion'),
+const startQuizEl = document.getElementById('start-quiz'),
+  exitBtnEl = document.getElementById('exitBtn'),
+  continueBtnEl = document.getElementById('continueBtn'),
   nextQuizEl = document.getElementById('nextQuiz'),
   quitQuizEl = document.getElementById('quitQuiz');
 
@@ -16,48 +15,20 @@ startQuizEl.addEventListener('click', () => {
 });
 
 exitBtnEl.addEventListener('click', () => {
-  boxTwoEl.style.display = 'none';
   boxOneEl.style.display = 'block';
+  boxTwoEl.style.display = 'none';
 });
 
 continueBtnEl.addEventListener('click', () => {
-  boxOneEl.style.display = 'none';
   boxTwoEl.style.display = 'none';
   boxThreeEl.style.display = 'block';
 });
 
 nextQuizEl.addEventListener('click', () => {
-  incrementQuiz();
+  boxThreeEl.style.display = 'none';
+  boxFourEl.style.display = 'block';
 });
 
 quitQuizEl.addEventListener('click', () => {
   location.reload();
 });
-
-let currentQuestion = 0;
-
-function incrementQuiz() {
-  if (currentQuestion < quizData.length - 1) {
-    currentQuestion++;
-    showQuizData(currentQuestion);
-  } else {
-    boxThreeEl.style.display = 'none';
-    boxFourEl.style.display = 'block';
-  }
-}
-
-function showQuizData() {
-  quizQuestionEl.innerHTML = `
-  <h1>${quizData[currentQuestion].question}</h1>
-    <ol>
-      <li>${quizData[currentQuestion].options[0]}</li>
-      <li>${quizData[currentQuestion].options[1]}</li>
-      <li>${quizData[currentQuestion].options[2]}</li>
-      <li>${quizData[currentQuestion].options[3]}</li>
-    </ol>
-  `;
-
-  let addIcon = quizQuestionEl.querySelectorAll('li');
-}
-
-showQuizData();

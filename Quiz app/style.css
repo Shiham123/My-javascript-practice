@@ -28,6 +28,10 @@ body {
 * ? box one start here
 */
 
+/* .box-one {
+  display: none;
+} */
+
 .box-one > .img {
   border-bottom: 1px solid black;
 }
@@ -142,7 +146,7 @@ body {
   text-transform: capitalize;
 }
 
-.box-three .content > h1 {
+.box-three .question > h1 {
   font-size: 20px;
   margin: 0 auto;
   text-align: left;
@@ -150,29 +154,22 @@ body {
   text-transform: capitalize;
 }
 
-.box-three .content > ol {
-  margin: 0rem 3rem;
-  line-height: 3;
-}
-
-.box-three .content ol > li {
-  font-size: 20px;
-  padding: 1.5rem 1rem;
+.box-three .option > option {
+  background-color: rgba(245, 222, 179, 0.521);
+  padding: 20px;
+  margin: 25px;
+  font-weight: 500;
+  font-size: 18px;
   text-transform: capitalize;
-  line-height: 2;
-  word-spacing: 2px;
-  background-color: rgba(241, 208, 208, 0.452);
-  margin: 1rem 0rem;
-  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.13) 0px 5px 15px;
   cursor: pointer;
-  position: relative;
+  transition: 0.3s ease-in-out;
 }
 
-.box-three > .content > ol > li > span {
-  position: absolute;
-  right: 0;
-  font-size: 22px;
-  padding: 0rem 1rem;
+.box-three > .option > option:hover {
+  background-color: rgba(245, 222, 179, 0.712);
+  box-shadow: rgba(0, 0, 0, 0.363) 0px 5px 15px;
+  transform: translate(5px, -5px);
 }
 
 .box-three > .button > button {
