@@ -30,8 +30,23 @@ continueBtnEl.addEventListener('click', () => {
   boxThreeEl.style.display = 'block';
 });
 
-nextQuizEl.addEventListener('click', () => {});
-
-quitQuizEl.addEventListener('click', () => {
-  location.reload();
+nextQuizEl.addEventListener('click', () => {
+  if (questionCount < quizData.length - 1) {
+    questionCount++;
+    showQuiz(questionCount);
+  } else {
+    console.log('nothing next');
+  }
 });
+
+function showQuiz(index) {
+  questionEl.innerHTML = `<h1>${quizData[index].question}</h1>`;
+  optionEl.innerHTML = `
+  <option value="">${quizData[index].options[0]}</option>
+  <option value="">${quizData[index].options[1]}</option>
+  <option value="">${quizData[index].options[2]}</option>
+  <option value="">${quizData[index].options[3]}</option>
+  `;
+}
+
+showQuiz(questionCount);
