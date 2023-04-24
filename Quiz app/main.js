@@ -10,7 +10,8 @@ const startQuizEl = document.getElementById('start-quiz'),
   quitQuizEl = document.getElementById('quitQuiz');
 
 const questionEl = document.getElementById('question'),
-  optionEl = document.getElementById('option');
+  optionEl = document.getElementById('option'),
+  totalEl = document.getElementById('total');
 
 let storeData = [];
 let questionCount = 0;
@@ -35,18 +36,21 @@ nextQuizEl.addEventListener('click', () => {
     questionCount++;
     showQuiz(questionCount);
   } else {
-    console.log('nothing next');
+    boxThreeEl.style.display = 'none';
+    boxFourEl.style.display = 'block';
   }
 });
 
 function showQuiz(index) {
-  questionEl.innerHTML = `<h1>${quizData[index].question}</h1>`;
+  questionEl.innerHTML = `<h1>${quizData[index].numb}. ${quizData[index].question}</h1>`;
   optionEl.innerHTML = `
   <option value="">${quizData[index].options[0]}</option>
   <option value="">${quizData[index].options[1]}</option>
   <option value="">${quizData[index].options[2]}</option>
   <option value="">${quizData[index].options[3]}</option>
   `;
+
+  totalEl.innerHTML = `<p>${quizData[index].numb} of ${quizData.length}</p>`;
 }
 
 showQuiz(questionCount);

@@ -1,5 +1,6 @@
 let quizData = [
   {
+    numb: 1,
     question: 'what is HTML stands for?',
     options: [
       'hypertext markup language',
@@ -10,6 +11,7 @@ let quizData = [
     correct: ['hypertext markup language'],
   },
   {
+    numb: 2,
     question: 'what is CSS full meaning?',
     options: [
       'Cascading style sheet',
@@ -20,6 +22,7 @@ let quizData = [
     correct: ['Cascading style sheet'],
   },
   {
+    numb: 3,
     question: 'what is SCSS?',
     options: [
       'CSS preprocessor',
@@ -30,6 +33,7 @@ let quizData = [
     correct: ['CSS preprocessor'],
   },
   {
+    numb: 4,
     question: 'what is Bootstrap?',
     options: [
       'Library function',
@@ -40,6 +44,7 @@ let quizData = [
     correct: ['Library function'],
   },
   {
+    numb: 5,
     question: 'What is javascript?',
     options: [
       'A scripting language',
@@ -50,6 +55,7 @@ let quizData = [
     correct: ['A scripting language'],
   },
   {
+    numb: 6,
     question: 'What is ReactJS?',
     options: [
       'Javascript library function',
@@ -60,6 +66,7 @@ let quizData = [
     correct: ['Javascript library function'],
   },
   {
+    numb: 7,
     question: 'what is nodeJS?',
     options: [
       'Javascript backend library',
