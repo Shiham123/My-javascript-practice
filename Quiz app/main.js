@@ -9,6 +9,12 @@ const startQuizEl = document.getElementById('start-quiz'),
   nextQuizEl = document.getElementById('nextQuiz'),
   quitQuizEl = document.getElementById('quitQuiz');
 
+const questionEl = document.getElementById('question'),
+  optionEl = document.getElementById('option');
+
+let storeData = [];
+let questionCount = 0;
+
 startQuizEl.addEventListener('click', () => {
   boxOneEl.style.display = 'none';
   boxTwoEl.style.display = 'block';
@@ -24,10 +30,7 @@ continueBtnEl.addEventListener('click', () => {
   boxThreeEl.style.display = 'block';
 });
 
-nextQuizEl.addEventListener('click', () => {
-  boxThreeEl.style.display = 'none';
-  boxFourEl.style.display = 'block';
-});
+nextQuizEl.addEventListener('click', () => {});
 
 quitQuizEl.addEventListener('click', () => {
   location.reload();
