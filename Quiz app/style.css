@@ -195,7 +195,7 @@ body {
 
 .options.correct {
   color: #155724;
-  background: #d4edda;
+  background: #113f1c;
   border: 1px solid #c3e6cb;
 }
 .options.incorrect {
@@ -206,6 +206,28 @@ body {
 
 .options.disabled {
   pointer-events: none;
+}
+
+.time-count {
+  position: absolute;
+  top: 11.5%;
+  right: 0;
+  color: rgb(53, 16, 16);
+  background-color: rgba(245, 222, 179, 0.521);
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 10px 10px;
+  margin: 10px 10px;
+}
+
+.time-count > .seconds {
+  color: rgb(212, 199, 199);
+  background: rgb(133, 64, 64);
+  padding: 0px 10px;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-weight: 500;
 }
 
 /**

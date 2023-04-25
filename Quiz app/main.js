@@ -54,9 +54,8 @@ function showQuiz(index) {
     `<div class="options">${quizData[index].options[3]}</div>`;
   totalEl.innerHTML = `<p>${quizData[index].numb} of ${quizData.length} Question</p>`;
 
-  let option = optionEl.querySelectorAll('.options');
   for (let i = 0; i < optionEl.children.length; i++) {
-    option[i].setAttribute('onclick', 'selectedOption(this)');
+    optionEl.children[i].setAttribute('onclick', 'selectedOption(this)');
   }
 }
 
