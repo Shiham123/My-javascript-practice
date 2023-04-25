@@ -166,11 +166,11 @@ body {
   transition: 0.3s ease-in-out;
 }
 
-.box-three > .option > .options:hover {
+/* .box-three > .option > .options:hover {
   background-color: rgba(245, 222, 179, 0.712);
   box-shadow: rgba(0, 0, 0, 0.363) 0px 5px 15px;
   transform: translate(5px, -5px);
-}
+} */
 
 .box-three > .button > button {
   position: absolute;
@@ -191,6 +191,17 @@ body {
 .box-three .total {
   padding: 10px;
   margin: 50px 10px;
+}
+
+.options.correct {
+  color: #155724;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+.options.incorrect {
+  color: #721c24;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
 }
 
 /**

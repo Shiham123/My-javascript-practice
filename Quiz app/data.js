@@ -8,7 +8,7 @@ let quizData = [
       'hypertext preprocessor',
       'Hypertext style language',
     ],
-    correct: ['hypertext markup language'],
+    correct: 'hypertext markup language',
   },
   {
     numb: 2,
@@ -19,7 +19,7 @@ let quizData = [
       'Cascading style formation ',
       'Cascading style function ',
     ],
-    correct: ['Cascading style sheet'],
+    correct: 'Cascading style sheet',
   },
   {
     numb: 3,
@@ -30,7 +30,7 @@ let quizData = [
       'CSS functionality',
       'CSS formation method',
     ],
-    correct: ['CSS preprocessor'],
+    correct: 'CSS preprocessor',
   },
   {
     numb: 4,
@@ -41,7 +41,7 @@ let quizData = [
       'Formation function',
       'Hypertext function ',
     ],
-    correct: ['Library function'],
+    correct: 'Library function',
   },
   {
     numb: 5,
@@ -52,7 +52,7 @@ let quizData = [
       'A IOS language',
       'A android web component',
     ],
-    correct: ['A scripting language'],
+    correct: 'A scripting language',
   },
   {
     numb: 6,
@@ -63,7 +63,7 @@ let quizData = [
       'Javascript syntax formation method',
       'Javascript Stack',
     ],
-    correct: ['Javascript library function'],
+    correct: 'Javascript library function',
   },
   {
     numb: 7,
@@ -74,6 +74,6 @@ let quizData = [
       'javascript stack',
       'javascript syntax formation method',
     ],
-    correct: ['Javascript backend library'],
+    correct: 'Javascript backend library',
   },
 ];

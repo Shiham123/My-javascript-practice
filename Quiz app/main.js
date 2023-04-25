@@ -57,6 +57,18 @@ function showQuiz(index) {
 }
 
 function selectedOption(answer) {
-  console.log(answer);
+  let userAnswer = answer.textContent;
+  let correctAnswer = quizData[questionCount].correct;
+
+  let checkIcon = `<i class="fa-solid fa-check"></i>`,
+    crossIcon = `<i class="fa-solid fa-times"></i>`;
+
+  if (userAnswer === correctAnswer) {
+    answer.classList.add('correct');
+    answer.insertAdjacentHTML('beforeend', checkIcon);
+  } else {
+    answer.classList.add('incorrect');
+    answer.insertAdjacentHTML('beforeend', crossIcon);
+  }
 }
 showQuiz(questionCount);
