@@ -49,8 +49,12 @@ function showQuiz(index) {
   <option value="">${quizData[index].options[2]}</option>
   <option value="">${quizData[index].options[3]}</option>
   `;
+  totalEl.innerHTML = `<p>${quizData[index].numb} of ${quizData.length} Question</p>`;
 
-  totalEl.innerHTML = `<p>${quizData[index].numb} of ${quizData.length}</p>`;
+  let spanEl = document.querySelectorAll('option');
+  spanEl.forEach((item) => {
+    console.log(item.textContent);
+  });
 }
 
 showQuiz(questionCount);
