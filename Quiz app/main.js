@@ -43,18 +43,20 @@ nextQuizEl.addEventListener('click', () => {
 
 function showQuiz(index) {
   questionEl.innerHTML = `<h1>${quizData[index].numb}. ${quizData[index].question}</h1>`;
-  optionEl.innerHTML = `
-  <option value="">${quizData[index].options[0]}</option>
-  <option value="">${quizData[index].options[1]}</option>
-  <option value="">${quizData[index].options[2]}</option>
-  <option value="">${quizData[index].options[3]}</option>
-  `;
+  optionEl.innerHTML =
+    `<div class="options">${quizData[index].options[0]}</div>` +
+    `<div class="options">${quizData[index].options[1]}</div>` +
+    `<div class="options">${quizData[index].options[2]}</div>` +
+    `<div class="options">${quizData[index].options[3]}</div>`;
   totalEl.innerHTML = `<p>${quizData[index].numb} of ${quizData.length} Question</p>`;
 
-  let spanEl = document.querySelectorAll('option');
-  spanEl.forEach((item) => {
-    console.log(item.textContent);
-  });
+  const option = optionEl.querySelectorAll('.options');
+  for (let i = 0; i < optionEl.children.length; i++) {
+    option[i].setAttribute('onclick', 'selectedOption(this)');
+  }
 }
 
+function selectedOption(answer) {
+  console.log(answer);
+}
 showQuiz(questionCount);

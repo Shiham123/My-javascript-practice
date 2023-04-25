@@ -154,7 +154,7 @@ body {
   text-transform: capitalize;
 }
 
-.box-three .option > option {
+.box-three .option > .options {
   background-color: rgba(245, 222, 179, 0.521);
   padding: 20px;
   margin: 25px;
@@ -166,7 +166,7 @@ body {
   transition: 0.3s ease-in-out;
 }
 
-.box-three > .option > option:hover {
+.box-three > .option > .options:hover {
   background-color: rgba(245, 222, 179, 0.712);
   box-shadow: rgba(0, 0, 0, 0.363) 0px 5px 15px;
   transform: translate(5px, -5px);
