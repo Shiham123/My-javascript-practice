@@ -41,6 +41,10 @@ nextQuizEl.addEventListener('click', () => {
   }
 });
 
+quitQuizEl.addEventListener('click', () => {
+  location.reload();
+});
+
 function showQuiz(index) {
   questionEl.innerHTML = `<h1>${quizData[index].numb}. ${quizData[index].question}</h1>`;
   optionEl.innerHTML =
@@ -49,26 +53,6 @@ function showQuiz(index) {
     `<div class="options">${quizData[index].options[2]}</div>` +
     `<div class="options">${quizData[index].options[3]}</div>`;
   totalEl.innerHTML = `<p>${quizData[index].numb} of ${quizData.length} Question</p>`;
-
-  const option = optionEl.querySelectorAll('.options');
-  for (let i = 0; i < optionEl.children.length; i++) {
-    option[i].setAttribute('onclick', 'selectedOption(this)');
-  }
 }
 
-function selectedOption(answer) {
-  let userAnswer = answer.textContent;
-  let correctAnswer = quizData[questionCount].correct;
-
-  let checkIcon = `<i class="fa-solid fa-check"></i>`,
-    crossIcon = `<i class="fa-solid fa-times"></i>`;
-
-  if (userAnswer === correctAnswer) {
-    answer.classList.add('correct');
-    answer.insertAdjacentHTML('beforeend', checkIcon);
-  } else {
-    answer.classList.add('incorrect');
-    answer.insertAdjacentHTML('beforeend', crossIcon);
-  }
-}
 showQuiz(questionCount);
