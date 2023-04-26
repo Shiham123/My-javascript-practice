@@ -13,12 +13,15 @@ const questionEl = document.getElementById('question'),
   optionEl = document.getElementById('option'),
   totalEl = document.getElementById('total');
 
-const timeCountEl = document.querySelector('.time-count .seconds');
+const timeCountEl = document.querySelector('.time-count .seconds'),
+  timerLineEl = document.getElementById('timer-lines');
 
 let storeData = [];
 let questionCount = 0;
 let timerCounter;
 let timerValue = 15;
+let lineCounter;
+let lineValue = 0;
 
 startQuizEl.addEventListener('click', () => {
   boxOneEl.style.display = 'none';
@@ -34,7 +37,11 @@ continueBtnEl.addEventListener('click', () => {
   boxTwoEl.style.display = 'none';
   boxThreeEl.style.display = 'block';
 
+  showQuiz(questionCount);
   startTimer(timerValue);
+
+  clearInterval(lineCounter);
+  startTimerLine(lineValue);
 });
 
 nextQuizEl.addEventListener('click', () => {
@@ -44,6 +51,9 @@ nextQuizEl.addEventListener('click', () => {
 
     clearInterval(timerCounter);
     startTimer(timerValue);
+
+    clearInterval(lineCounter);
+    startTimerLine(lineValue);
   } else {
     boxThreeEl.style.display = 'none';
     boxFourEl.style.display = 'block';
@@ -69,6 +79,9 @@ function showQuiz(index) {
 }
 
 function selectedOption(answer) {
+  clearInterval(timerCounter);
+  clearInterval(lineCounter);
+
   let userAnswer = answer.textContent;
   let correctAnswer = quizData[questionCount].correct;
 
@@ -115,4 +128,13 @@ function startTimer(timer) {
   }, 1000);
 }
 
-showQuiz(questionCount);
+function startTimerLine(timerLine) {
+  lineCounter = setInterval(() => {
+    timerLine += 1;
+    timerLineEl.style.width = timerLine + 'px';
+
+    if (timerLine > 500) {
+      clearInterval(lineCounter);
+    }
+  }, 30);
+}

@@ -230,6 +230,12 @@ body {
   font-weight: 500;
 }
 
+.box-three .time-lines {
+  margin-top: -10px;
+  height: 3px;
+  background-color: rgba(5, 5, 182, 0.356);
+}
+
 /**
 * ! box three style end here
 * ? box four style start here
