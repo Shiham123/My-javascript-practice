@@ -13,8 +13,12 @@ const questionEl = document.getElementById('question'),
   optionEl = document.getElementById('option'),
   totalEl = document.getElementById('total');
 
+const timeCountEl = document.querySelector('.time-count .seconds');
+
 let storeData = [];
 let questionCount = 0;
+let timerCounter;
+let timerValue = 15;
 
 startQuizEl.addEventListener('click', () => {
   boxOneEl.style.display = 'none';
@@ -29,12 +33,17 @@ exitBtnEl.addEventListener('click', () => {
 continueBtnEl.addEventListener('click', () => {
   boxTwoEl.style.display = 'none';
   boxThreeEl.style.display = 'block';
+
+  startTimer(timerValue);
 });
 
 nextQuizEl.addEventListener('click', () => {
   if (questionCount < quizData.length - 1) {
     questionCount++;
     showQuiz(questionCount);
+
+    clearInterval(timerCounter);
+    startTimer(timerValue);
   } else {
     boxThreeEl.style.display = 'none';
     boxFourEl.style.display = 'block';
@@ -86,6 +95,24 @@ function selectedOption(answer) {
   }
 
   nextQuizEl.style.display = 'block';
+}
+
+function startTimer(timer) {
+  timeCountEl.textContent = timer;
+
+  timerCounter = setInterval(() => {
+    timeCountEl.textContent = timer;
+    timer--;
+
+    if (timer < 0) {
+      timeCountEl.textContent = 0;
+    }
+
+    if (timer < 9) {
+      let addZero = timeCountEl.textContent;
+      timeCountEl.textContent = 0 + addZero;
+    }
+  }, 1000);
 }
 
 showQuiz(questionCount);
