@@ -13,12 +13,11 @@ const questionEl = document.getElementById('question'),
   optionEl = document.getElementById('option'),
   totalEl = document.getElementById('total');
 
-const timeCountEl = document.querySelector('.time-count .seconds'),
+const timeCountEl = document.getElementById('seconds'),
   timerLineEl = document.getElementById('timer-lines');
 
-let storeData = [];
 let questionCount = 0;
-let timerCounter;
+let timerCount;
 let timerValue = 15;
 let lineCounter;
 let lineValue = 0;
@@ -40,7 +39,6 @@ continueBtnEl.addEventListener('click', () => {
   showQuiz(questionCount);
   startTimer(timerValue);
 
-  clearInterval(lineCounter);
   startTimerLine(lineValue);
 });
 
@@ -49,7 +47,7 @@ nextQuizEl.addEventListener('click', () => {
     questionCount++;
     showQuiz(questionCount);
 
-    clearInterval(timerCounter);
+    clearInterval(timerCount);
     startTimer(timerValue);
 
     clearInterval(lineCounter);
@@ -79,8 +77,8 @@ function showQuiz(index) {
 }
 
 function selectedOption(answer) {
-  clearInterval(timerCounter);
   clearInterval(lineCounter);
+  clearInterval(timerCount);
 
   let userAnswer = answer.textContent;
   let correctAnswer = quizData[questionCount].correct;
@@ -113,28 +111,27 @@ function selectedOption(answer) {
 function startTimer(timer) {
   timeCountEl.textContent = timer;
 
-  timerCounter = setInterval(() => {
+  timerCount = setInterval(() => {
     timeCountEl.textContent = timer;
     timer--;
 
     if (timer < 0) {
-      timeCountEl.textContent = 0;
+      clearInterval(timerCount);
     }
 
     if (timer < 9) {
-      let addZero = timeCountEl.textContent;
-      timeCountEl.textContent = 0 + addZero;
+      timeCountEl.textContent = 0 + timeCountEl.textContent;
     }
   }, 1000);
 }
 
-function startTimerLine(timerLine) {
+function startTimerLine(line) {
   lineCounter = setInterval(() => {
-    timerLine += 1;
-    timerLineEl.style.width = timerLine + 'px';
+    timerLineEl.style.width = line + 'px';
+    line++;
 
-    if (timerLine > 500) {
+    if (line > 500) {
       clearInterval(lineCounter);
     }
-  }, 30);
+  }, 25);
 }
