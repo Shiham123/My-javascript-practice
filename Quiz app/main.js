@@ -78,9 +78,12 @@ function showQuiz(index) {
   for (let i = 0; i < optionEl.children.length; i++) {
     optionEl.children[i].setAttribute('onclick', 'selectedOption(this)');
   }
+  nextQuizEl.style.display = 'none';
 }
 
 function selectedOption(answer) {
+  nextQuizEl.style.display = 'block';
+
   clearInterval(lineCounter);
   clearInterval(timerCount);
 
@@ -110,8 +113,6 @@ function selectedOption(answer) {
   for (let i = 0; i < optionEl.children.length; i++) {
     optionEl.children[i].classList.add('disabled');
   }
-
-  nextQuizEl.style.display = 'block';
 }
 
 function startTimer(timer) {
