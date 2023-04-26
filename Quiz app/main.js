@@ -16,11 +16,14 @@ const questionEl = document.getElementById('question'),
 const timeCountEl = document.getElementById('seconds'),
   timerLineEl = document.getElementById('timer-lines');
 
+const resultEl = document.getElementById('result-content');
+
 let questionCount = 0;
 let timerCount;
 let timerValue = 15;
 let lineCounter;
 let lineValue = 0;
+let userScore = 0;
 
 startQuizEl.addEventListener('click', () => {
   boxOneEl.style.display = 'none';
@@ -55,6 +58,7 @@ nextQuizEl.addEventListener('click', () => {
   } else {
     boxThreeEl.style.display = 'none';
     boxFourEl.style.display = 'block';
+    showResult(userScore);
   }
 });
 
@@ -87,6 +91,8 @@ function selectedOption(answer) {
     crossIcon = `<i class="fa-solid fa-times"></i>`;
 
   if (userAnswer === correctAnswer) {
+    userScore += 1;
+
     answer.classList.add('correct');
     answer.insertAdjacentHTML('beforeend', checkIcon);
   } else {
@@ -134,4 +140,14 @@ function startTimerLine(line) {
       clearInterval(lineCounter);
     }
   }, 25);
+}
+
+function showResult() {
+  if (userScore < 3) {
+    resultEl.innerHTML = `<h3>Good but make it better, your result is ${userScore} out of ${quizData.length}</h3>`;
+  } else if (userScore < 5) {
+    resultEl.innerHTML = `<h3>Better take it up, your result is ${userScore} out of ${quizData.length}</h3>`;
+  } else {
+    resultEl.innerHTML = `<h3>Out of mind, your result is ${userScore} out of ${quizData.length}</h3>`;
+  }
 }
