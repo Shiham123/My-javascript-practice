@@ -54,4 +54,35 @@ function showQuiz(index) {
     `<div class="options">${quizData[index].options[2]}</div>` +
     `<div class="options">${quizData[index].options[3]}</div>`;
   totalEl.innerHTML = `<p>${quizData[index].numb} of ${quizData.length}</p>`;
+
+  for (let i = 0; i < optionEl.children.length; i++) {
+    optionEl.children[i].setAttribute('onclick', 'selectedOption(this)');
+  }
+
+  nextQuizBtnEl.style.display = 'none';
+}
+
+function selectedOption(answer) {
+  let userAnswer = answer.textContent;
+  let correctAnswer = quizData[questionCount].correct;
+
+  let checkIcon = `<i class="fa-solid fa-check"></i>`,
+    crossIcon = `<i class="fa-solid fa-times"></i>`;
+
+  if (userAnswer === correctAnswer) {
+    answer.classList.add('correct');
+    answer.insertAdjacentHTML('beforeend', checkIcon);
+  } else {
+    answer.classList.add('incorrect');
+    answer.insertAdjacentHTML('beforeend', crossIcon);
+
+    for (let i = 0; i < optionEl.children.length; i++) {
+      if (optionEl.children[i].textContent === correctAnswer) {
+        optionEl.children[i].insertAdjacentHTML('beforeend', checkIcon);
+        optionEl.children[i].classList.add('correct');
+      }
+      optionEl.children[i].classList.add('disabled');
+    }
+  }
+  nextQuizBtnEl.style.display = 'block';
 }
