@@ -7,7 +7,8 @@ const startQuizEl = document.getElementById('start-quiz'),
   exitBtnEl = document.getElementById('exitBtn'),
   continueBtnEl = document.getElementById('continueBtn'),
   nextQuizEl = document.getElementById('nextQuiz'),
-  quitQuizEl = document.getElementById('quitQuiz');
+  quitQuizEl = document.getElementById('quitQuiz'),
+  replyQuizEl = document.getElementById('replyQuiz');
 
 const questionEl = document.getElementById('question'),
   optionEl = document.getElementById('option'),
@@ -64,6 +65,26 @@ nextQuizEl.addEventListener('click', () => {
 
 quitQuizEl.addEventListener('click', () => {
   location.reload();
+});
+
+replyQuizEl.addEventListener('click', (e) => {
+  boxFourEl.style.display = 'none';
+  boxTwoEl.style.display = 'block';
+
+  questionCount = 0;
+  userScore = 0;
+  if (questionCount > 5) {
+    questionCount++;
+    showQuiz(questionCount);
+
+    showResult(userScore);
+
+    clearInterval(timerCount);
+    startTimer(timerValue);
+
+    clearInterval(lineCounter);
+    startTimerLine(lineValue);
+  }
 });
 
 function showQuiz(index) {
