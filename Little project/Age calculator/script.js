@@ -11,7 +11,9 @@ function showBirthDay() {
     showInvalidDate();
   } else {
     let age = getAge(birthdayValue);
-    resultEl.innerHTML = `Your age is ${age} years old`;
+    let ageMonth = getMonthAge(birthdayValue);
+    let getDay = getDayAge(birthdayValue);
+    resultEl.innerHTML = `Your age is ${age} years ${ageMonth} month and ${getDay} days old`;
   }
 }
 
@@ -20,15 +22,33 @@ function getAge(value) {
     birthdayDate = new Date(value);
 
   let year = currentDate.getFullYear() - birthdayDate.getFullYear();
-  let month = currentDate.getMonth() - birthdayDate.getMonth();
-
-  if (
-    month < 0 ||
-    (month === 0 && currentDate.getDate() < birthdayDate.getDate())
-  ) {
+  if (currentDate.getFullYear() < birthdayDate.getFullYear()) {
     year--;
   }
   return year;
+}
+
+function getMonthAge(value) {
+  let currentDate = new Date();
+  let birthdayDate = new Date(value);
+
+  let month = currentDate.getMonth() - birthdayDate.getMonth();
+  if (currentDate.getMonth() < birthdayDate.getMonth()) {
+    month--;
+  }
+  return month;
+}
+
+function getDayAge(value) {
+  let currentDate = new Date();
+  let birthdayDate = new Date(value);
+
+  let day = currentDate.getDate() - birthdayDate.getDate();
+
+  if (currentDate.getDate() < birthdayDate.getDate()) {
+    day--;
+  }
+  return day;
 }
 
 function showInvalidDate() {
