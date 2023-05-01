@@ -1,32 +1,31 @@
 const diceEl = document.getElementById('dice'),
-  rollBtnEl = document.getElementById('roll-button'),
-  resetBtnEl = document.getElementById('reset-button'),
+  rollDiceBtnEl = document.getElementById('roll-button'),
+  resetDiceBtnEl = document.getElementById('reset-button'),
   rollHistoryEl = document.getElementById('roll-history');
 
-let storeDice = [];
+let storeDiceHistory = [];
 
 function getDiceRoll() {
   const rollDice = Math.floor(Math.random() * 6) + 1;
-  const resultRoll = getDiceCode(rollDice);
-  diceEl.innerHTML = resultRoll;
-  storeDice.push(rollDice);
-  showDice();
-  localStorage.setItem('data', JSON.stringify(resultRoll));
+  const resultDice = getDiceResult(rollDice);
+  diceEl.innerHTML = resultDice;
+  storeDiceHistory.push(rollDice);
+  showDiceHistory();
 }
 
-function showDice() {
+function showDiceHistory() {
   rollHistoryEl.innerHTML = '';
-  for (let i = 0; i < storeDice.length; i++) {
+  for (let i = 0; i < storeDiceHistory.length; i++) {
     const listItem = document.createElement('li');
-    listItem.innerHTML = `Roll : ${i + 1} <span>${getDiceCode(
-      storeDice[i]
+    listItem.innerHTML = `Roll ${i + 1} <span>${getDiceResult(
+      storeDiceHistory[i]
     )}</span>`;
     rollHistoryEl.appendChild(listItem);
   }
 }
 
-function getDiceCode(rollResult) {
-  switch (rollResult) {
+function getDiceResult(resultDice) {
+  switch (resultDice) {
     case 1:
       return '&#9856';
     case 2:
@@ -44,7 +43,7 @@ function getDiceCode(rollResult) {
   }
 }
 
-rollBtnEl.addEventListener('click', () => {
+rollDiceBtnEl.addEventListener('click', () => {
   diceEl.classList.add('roll-animation');
 
   setTimeout(() => {
