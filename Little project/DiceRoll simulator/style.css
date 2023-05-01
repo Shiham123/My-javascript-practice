@@ -30,6 +30,14 @@ h1 {
   }
 }
 
+#reset-button {
+  background-color: #7c490e;
+}
+
+#reset-button:hover {
+  background-color: #7c490e91;
+}
+
 button {
   background-color: #47a5c4;
   color: white;
