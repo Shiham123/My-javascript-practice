@@ -9,15 +9,19 @@ function displayRecipes(recipesValue) {
     const recipeItemEl = document.createElement('li');
     recipeItemEl.classList.add('recipe-item');
 
+    const recipeImgEl = document.createElement('img');
+    recipeImgEl.src = recipe.image;
+
     const recipeTitleEl = document.createElement('h2');
     recipeTitleEl.innerText = recipe.title;
 
     const recipeIngredientEl = document.createElement('p');
     recipeIngredientEl.innerHTML = `<strong>Ingredients : </strong> ${recipe.extendedIngredients
       .map((ingredient) => ingredient.original)
-      .join(', ')}`;
+      .join(',')}`;
 
     recipeListEl.appendChild(recipeItemEl);
+    recipeItemEl.appendChild(recipeImgEl);
     recipeItemEl.appendChild(recipeTitleEl);
     recipeItemEl.appendChild(recipeIngredientEl);
   });
