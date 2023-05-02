@@ -7,25 +7,31 @@ const recipeListEl = document.getElementById('recipe-list');
 function displayRecipe(recipes) {
   recipeListEl.innerHTML = '';
   recipes.forEach((recipe) => {
-    const recipeItemEl = document.createElement('li');
-    recipeItemEl.classList.add('recipe-item');
-
-    const recipeImgEl = document.createElement('img');
-    recipeImgEl.src = recipe.image;
-
-    const recipeTitleEl = document.createElement('h2');
-    recipeTitleEl.innerHTML = recipe.title;
-
-    const recipeIngredientsEl = document.createElement('p');
-    recipeIngredientsEl.innerHTML = `<strong>Ingredients : </strong> ${recipe.extendedIngredients
-      .map((ingredient) => ingredient.original)
-      .join(', ')}`;
-
-    recipeListEl.appendChild(recipeItemEl);
-    recipeItemEl.appendChild(recipeImgEl);
-    recipeItemEl.appendChild(recipeTitleEl);
-    recipeItemEl.appendChild(recipeIngredientsEl);
+    const createRecipe = createRecipeElement(recipe);
+    recipeListEl.appendChild(createRecipe);
   });
+}
+
+function createRecipeElement(recipe) {
+  const recipeItemEl = document.createElement('li');
+  recipeItemEl.classList.add('recipe-item');
+
+  const recipeImgEl = document.createElement('img');
+  recipeImgEl.src = recipe.image;
+
+  const recipeTitleEl = document.createElement('h2');
+  recipeTitleEl.innerHTML = recipe.title;
+
+  const recipeIngredientsEl = document.createElement('p');
+  recipeIngredientsEl.innerHTML = `<strong>Ingredients : </strong> ${recipe.extendedIngredients
+    .map((ingredient) => ingredient.original)
+    .join(', ')}`;
+
+  recipeItemEl.appendChild(recipeImgEl);
+  recipeItemEl.appendChild(recipeTitleEl);
+  recipeItemEl.appendChild(recipeIngredientsEl);
+
+  return recipeItemEl;
 }
 
 async function getRecipeList() {
