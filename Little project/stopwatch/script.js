@@ -4,6 +4,8 @@ const timerEl = document.getElementById('timer'),
   resetBtnEl = document.getElementById('reset');
 
 startBtnEl.addEventListener('click', startTimer);
+stopBtnEl.addEventListener('click', stopTimer);
+resetBtnEl.addEventListener('click', resetTimer);
 
 let startTime = 0,
   elapsedTime = 0;
@@ -12,6 +14,7 @@ let timeInterval;
 
 function startTimer() {
   startTime = Date.now() - elapsedTime;
+
   timeInterval = setInterval(() => {
     elapsedTime = Date.now() - startTime;
     timerEl.textContent = formatTime(elapsedTime);
@@ -19,21 +22,36 @@ function startTimer() {
 
   startBtnEl.disabled = true;
   stopBtnEl.disabled = false;
+  resetBtnEl.disabled = false;
 }
 
-function formatTime() {
-  const milliseconds = Math.floor((elapsedTime % 1000) / 10);
-  const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
-  const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+function formatTime(elapsedTime) {
+  const millisecond = Math.floor((elapsedTime % 1000) / 10);
+  const second = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+  const minute = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
   const hour = Math.floor(elapsedTime / (1000 * 60 * 60));
 
-  return (
-    (hour ? (hour > 9 ? hour : '0' + hour) : '00') +
-    ':' +
-    (minutes ? (minutes > 9 ? minutes : '0' + minutes) : '00') +
-    ':' +
-    (seconds ? (seconds > 9 ? seconds : '0' + seconds) : '00') +
-    '.' +
-    (milliseconds > 9 ? milliseconds : '0' + milliseconds)
-  );
+  const hours = hour.toString().padStart(2, '0'),
+    minutes = minute.toString().padStart(2, '0'),
+    seconds = second.toString().padStart(2, '0'),
+    milliseconds = millisecond.toString().padStart(2, '0');
+
+  const formattedTime = `${hours}:${minutes}:${seconds}:${milliseconds}`;
+  return formattedTime;
+}
+
+function stopTimer() {
+  clearInterval(timeInterval);
+  startBtnEl.disabled = false;
+  stopBtnEl.disabled = true;
+}
+
+function resetTimer() {
+  clearInterval(timeInterval);
+  elapsedTime = 0;
+  timerEl.textContent = '00:00:00';
+
+  startBtnEl.disabled = false;
+  resetBtnEl.disabled = true;
+  stopBtnEl.disabled = true;
 }
