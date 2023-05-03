@@ -8,32 +8,31 @@ let computerScore = 0;
 
 btnEl.forEach((btn) => {
   btn.addEventListener('click', () => {
-    const result = playRound(btn.id, computerPlay());
+    const result = showScore(btn.id, getComputerScore());
     resultEl.textContent = result;
   });
 });
 
-function computerPlay() {
-  const choices = ['rock', 'paper', 'scissors'];
-  const randomScore = Math.floor(Math.random() * choices.length);
-
-  return choices[randomScore];
+function getComputerScore() {
+  const element = ['rock', 'paper', 'scissors'];
+  const result = Math.floor(Math.random() * element.length);
+  return element[result];
 }
 
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
+function showScore(player, computer) {
+  if (player === computer) {
     return `it's a tie`;
   } else if (
-    (playerSelection === 'rock' && computerSelection === 'scissors') ||
-    (playerSelection === 'paper' && computerSelection === 'rock') ||
-    (playerSelection === 'scissors' && computerSelection === 'paper')
+    (player === 'rock' && computer === 'paper') ||
+    (player === 'paper' && computer === 'scissors') ||
+    (player === 'scissors' && computer === 'rock')
   ) {
     playerScore++;
     userScoreEl.textContent = playerScore;
-    return `You win ${playerSelection} and beats ${computerSelection}`;
+    return `player beats computer`;
   } else {
     computerScore++;
     computerScoreEl.textContent = computerScore;
-    return `You loss ${computerSelection} beats ${playerSelection}`;
+    return `computer beats player`;
   }
 }
