@@ -29,10 +29,10 @@ function showScore(player, computer) {
   ) {
     playerScore++;
     userScoreEl.textContent = playerScore;
-    return `player beats computer`;
+    return `You win! ${player} beats ${computer}`;
   } else {
     computerScore++;
     computerScoreEl.textContent = computerScore;
-    return `computer beats player`;
+    return `You lose! ${computer} beats ${player}`;
   }
 }
