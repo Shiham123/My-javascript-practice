@@ -23,7 +23,11 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return `it's a tie`;
-  } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+  } else if (
+    (playerSelection === 'rock' && computerSelection === 'scissors') ||
+    (playerSelection === 'paper' && computerSelection === 'rock') ||
+    (playerSelection === 'scissors' && computerSelection === 'paper')
+  ) {
     playerScore++;
     userScoreEl.textContent = playerScore;
     return `You win ${playerSelection} and beats ${computerSelection}`;
