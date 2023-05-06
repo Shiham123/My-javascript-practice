@@ -12,10 +12,10 @@ tabsEl.addEventListener('click', (e) => {
     e.target.classList.add('live');
 
     contentEl.forEach((content) => {
-      if (content.getAttribute('id') !== id) {
-        content.classList.remove('live');
-      } else {
+      if (content.getAttribute('id') === id) {
         content.classList.add('live');
+      } else {
+        content.classList.remove('live');
       }
     });
   }
