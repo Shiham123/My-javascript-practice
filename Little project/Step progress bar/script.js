@@ -25,5 +25,35 @@ prevBtnEl.addEventListener('click', () => {
 });
 
 function updateProgressBar() {
-  stepsEl.forEach((item, index) => {});
+  stepsEl.forEach((item, index) => {
+    if (index < currentNumber) {
+      item.classList.add('checked');
+      item.innerHTML = `<i class="fas fa-check"></i>
+      <small>${
+        index === 0
+          ? 'Start'
+          : index === stepsEl.length - 1
+          ? 'Final'
+          : 'Step' + index
+      }</small>
+      `;
+    } else {
+      item.classList.remove('checked');
+      item.innerHTML = `<i class="fas fa-times"></i>`;
+    }
+  });
+
+  const checkNumber = document.querySelectorAll('.checked');
+
+  progressEl.style.width =
+    ((checkNumber.length - 1) / (stepsEl.length - 1)) * 100 + '%';
+
+  if (currentNumber === 1) {
+    prevBtnEl.disabled = true;
+  } else if (currentNumber === stepsEl.length) {
+    nextBtnEl.disabled = true;
+  } else {
+    prevBtnEl.disabled = false;
+    nextBtnEl.disabled = false;
+  }
 }
