@@ -29,6 +29,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+
 .progress-bar-front {
   position: absolute;
   height: 4px;
