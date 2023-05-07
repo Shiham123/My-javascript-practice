@@ -11,7 +11,6 @@ nextBtnEl.addEventListener('click', () => {
   if (currentNumber > stepsEl.length - 1) {
     currentNumber = stepsEl.length;
   }
-
   updateProgressBar();
 });
 
@@ -20,7 +19,6 @@ prevBtnEl.addEventListener('click', () => {
   if (currentNumber < 1) {
     currentNumber = 1;
   }
-
   updateProgressBar();
 });
 
@@ -43,17 +41,5 @@ function updateProgressBar() {
     }
   });
 
-  const checkNumber = document.querySelectorAll('.checked');
-
-  progressEl.style.width =
-    ((checkNumber.length - 1) / (stepsEl.length - 1)) * 100 + '%';
-
-  if (currentNumber === 1) {
-    prevBtnEl.disabled = true;
-  } else if (currentNumber === stepsEl.length) {
-    nextBtnEl.disabled = true;
-  } else {
-    prevBtnEl.disabled = false;
-    nextBtnEl.disabled = false;
-  }
+  const checkedNumber = document.querySelectorAll('.checked');
 }
