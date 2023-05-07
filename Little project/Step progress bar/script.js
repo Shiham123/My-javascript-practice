@@ -42,4 +42,15 @@ function updateProgressBar() {
   });
 
   const checkedNumber = document.querySelectorAll('.checked');
+  progressEl.style.width =
+    ((checkedNumber.length - 1) / (stepsEl.length - 1)) * 100 + '%';
+
+  if (currentNumber === stepsEl.length) {
+    nextBtnEl.disabled = true;
+  } else if (currentNumber === 1) {
+    prevBtnEl.disabled = true;
+  } else {
+    nextBtnEl.disabled = false;
+    prevBtnEl.disabled = false;
+  }
 }
