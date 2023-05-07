@@ -1,17 +1,20 @@
 const btnEl = document.querySelector('.btn'),
   inputEl = document.getElementById('input'),
-  copyIconEl = document.querySelector('.fa-copy'),
+  copyEl = document.querySelector('.fa-copy'),
   alertEl = document.querySelector('.alert-container');
 
-btnEl.addEventListener('click', createPassword);
+btnEl.addEventListener('click', () => {
+  createPassword();
+});
 
-copyIconEl.addEventListener('click', () => {
+copyEl.addEventListener('click', () => {
   copyPassword();
   if (inputEl.value) {
     alertEl.classList.remove('active');
     setTimeout(() => {
       alertEl.classList.add('active');
     }, 3000);
+    inputEl.value = '';
   }
 });
 
@@ -25,12 +28,12 @@ function createPassword() {
   for (let i = 0; i < passwordLength; i++) {
     const randomNumber = Math.floor(Math.random() * chars.length);
     password += chars.substring(randomNumber, randomNumber + 1);
-    inputEl.value = password;
   }
+  inputEl.value = password;
 }
 
 function copyPassword() {
   inputEl.select();
-  inputEl.setSelectionRange(0, 9999);
+  inputEl.setSelectionRange(0, 18);
   navigator.clipboard.writeText(inputEl.value);
 }
