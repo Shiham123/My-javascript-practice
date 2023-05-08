@@ -7,16 +7,15 @@ counterEl.forEach((counter) => {
 
   function incrementCounter() {
     let counterNum = +counter.innerText;
-    const dataCeil = counter.getAttribute('data-ceil');
+    const maxValue = counter.getAttribute('data-max');
 
-    const increment = dataCeil / 15;
-    counterNum = Math.ceil(counterNum + increment);
+    counterNum = Math.ceil(counterNum + maxValue / 15);
 
-    if (counterNum <= dataCeil) {
+    if (counterNum <= maxValue) {
       counter.innerText = counterNum;
       setTimeout(incrementCounter, 50);
     } else {
-      counter.innerText = dataCeil;
+      counter.innerText = maxValue;
     }
   }
 });
