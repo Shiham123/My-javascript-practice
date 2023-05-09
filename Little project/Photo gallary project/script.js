@@ -1,16 +1,24 @@
 const btnEl = document.getElementById('btn'),
   galleryEl = document.getElementById('gallery'),
-  errorMsgEl = document.getElementById('errorMessage');
+  errorMsgEl = document.getElementById('errorMessage'),
+  inputEl = document.getElementById('input'),
+  clearBtnEl = document.getElementById('clear-btn');
 
-btnEl.addEventListener('click', fetchImg);
-let images = '';
+let perImgs = '';
 
-async function fetchImg() {
-  const inputValue = document.getElementById('input').value;
+btnEl.addEventListener('click', fetchingImages);
 
-  if (inputValue < 0 || inputValue > 10) {
+clearBtnEl.addEventListener('click', () => {
+  perImgs = '';
+  galleryEl.style.display = 'none';
+});
+
+async function fetchingImages() {
+  const inputValue = inputEl.value;
+
+  if (inputValue < 1 || inputValue > 10) {
     errorMsgEl.style.display = 'block';
-    errorMsgEl.innerText = 'Number should be between 0 to 10';
+    errorMsgEl.innerText = 'Number should be between 0 and 10';
     return;
   }
 
@@ -18,6 +26,7 @@ async function fetchImg() {
     btnEl.style.display = 'none';
     const loading = `<img src="spninner.svg"/>`;
     galleryEl.innerHTML = loading;
+
     await fetch(
       `https://api.unsplash.com/photos?per_page=${inputValue}&page=${Math.round(
         Math.random() * 1000
@@ -26,11 +35,10 @@ async function fetchImg() {
       response.json().then((data) => {
         if (data) {
           data.forEach((pic) => {
-            images += `<img src=${pic.urls.small}/>`;
-            galleryEl.style.display = 'block';
-            galleryEl.innerHTML = images;
             btnEl.style.display = 'block';
-            errorMsgEl.style.display = 'none';
+            perImgs += `<img src=${pic.urls.full}/>`;
+            galleryEl.style.display = 'block';
+            galleryEl.innerHTML = perImgs;
           });
         }
       })
@@ -38,8 +46,6 @@ async function fetchImg() {
   } catch (error) {
     console.log(error);
     errorMsgEl.style.display = 'block';
-    errorMsgEl.innerHTML = 'an error happen, try again later';
-    btnEl.style.display = 'block';
-    galleryEl.style.display = 'none';
+    errorMsgEl.innerText = 'An error showup, please fix the error';
   }
 }
