@@ -9,24 +9,23 @@ getNote().forEach((note) => {
 });
 
 function addNote() {
-  let notes = getNote();
+  let note = getNote();
 
   let noteObj = {
     id: Math.floor(Math.random() * 10000),
     content: '',
   };
-
   let noteEl = createNote(noteObj.id, noteObj.content);
   appEl.insertBefore(noteEl, btnEl);
-  notes.push(noteObj);
 
-  saveNote(notes);
+  note.push(noteObj);
+  saveNote(note);
 }
 
 function createNote(id, content) {
   let element = document.createElement('textarea');
   element.classList.add('note');
-  element.placeholder = 'Empty Note';
+  element.placeholder = 'Empty note';
   element.value = content;
 
   element.addEventListener('input', () => {
@@ -34,7 +33,7 @@ function createNote(id, content) {
   });
 
   element.addEventListener('dblclick', () => {
-    const warning = confirm('do you want to delete this note?');
+    let warning = confirm('do you want to delete notes?');
     if (warning) {
       deleteNote(id, element);
     }
@@ -50,9 +49,9 @@ function updateNote(id, value) {
 }
 
 function deleteNote(id, element) {
-  const notes = getNote().filter((note) => note.id != id);
-  saveNote(notes);
+  let notes = getNote().filter((note) => note.id != id);
   appEl.removeChild(element);
+  saveNote(notes);
 }
 
 function getNote() {
