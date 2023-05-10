@@ -3,62 +3,62 @@ const btnEl = document.getElementById('btn'),
 
 btnEl.addEventListener('click', addNote);
 
-getNotes().forEach((note) => {
-  const noteEl = createElement(note.id, note.content);
+getNote().forEach((note) => {
+  let noteEl = createNote(note.id, note.content);
   appEl.insertBefore(noteEl, btnEl);
 });
 
 function addNote() {
-  const notes = getNotes();
-  const randomNoteNumber = Math.floor(Math.random() * 10000);
-  const noteObj = {
-    id: randomNoteNumber,
+  let notes = getNote();
+
+  let noteObj = {
+    id: Math.floor(Math.random() * 10000),
     content: '',
   };
-  const noteEl = createElement(noteObj.id, noteObj.content);
-  appEl.insertBefore(noteEl, btnEl);
 
+  let noteEl = createNote(noteObj.id, noteObj.content);
+  appEl.insertBefore(noteEl, btnEl);
   notes.push(noteObj);
-  saveNotes(notes);
+
+  saveNote(notes);
 }
 
-function createElement(id, content) {
-  const element = document.createElement('textarea');
+function createNote(id, content) {
+  let element = document.createElement('textarea');
   element.classList.add('note');
-  element.placeholder = 'Empty note';
+  element.placeholder = 'Empty Note';
   element.value = content;
-
-  element.addEventListener('dblclick', () => {
-    const warning = confirm('Do you want to delete this note?');
-    if (warning) {
-      deleteNote(id, element);
-    }
-  });
 
   element.addEventListener('input', () => {
     updateNote(id, element.value);
   });
 
+  element.addEventListener('dblclick', () => {
+    const warning = confirm('do you want to delete this note?');
+    if (warning) {
+      deleteNote(id, element);
+    }
+  });
   return element;
 }
 
-function updateNote(id, content) {
-  const notes = getNotes();
-  const target = notes.filter((note) => note.id === id)[0];
-  target.content = content;
-  saveNotes(notes);
+function updateNote(id, value) {
+  let notes = getNote();
+  let target = notes.filter((note) => note.id === id)[0];
+  target.content = value;
+  saveNote(notes);
 }
 
 function deleteNote(id, element) {
-  const notes = getNotes().filter((note) => note.id !== id);
-  saveNotes(notes);
+  const notes = getNote().filter((note) => note.id != id);
+  saveNote(notes);
   appEl.removeChild(element);
 }
 
-function saveNotes(note) {
-  localStorage.setItem('note', JSON.stringify(note));
+function getNote() {
+  return JSON.parse(localStorage.getItem('note')) || [];
 }
 
-function getNotes() {
-  return JSON.parse(localStorage.getItem('note')) || [];
+function saveNote(note) {
+  return localStorage.setItem('note', JSON.stringify(note));
 }
