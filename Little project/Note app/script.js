@@ -4,22 +4,21 @@ const btnEl = document.getElementById('btn'),
 btnEl.addEventListener('click', addNote);
 
 getNote().forEach((note) => {
-  let noteEl = createNote(note.id, note.content);
-  appEl.insertBefore(noteEl, btnEl);
+  let notesEl = createNote(note.id, note.content);
+  appEl.insertBefore(notesEl, btnEl);
 });
 
 function addNote() {
-  let note = getNote();
-
+  let noteArr = getNote();
   let noteObj = {
     id: Math.floor(Math.random() * 10000),
     content: '',
   };
-  let noteEl = createNote(noteObj.id, noteObj.content);
-  appEl.insertBefore(noteEl, btnEl);
+  let notesEl = createNote(noteObj.id, noteObj.content);
+  appEl.insertBefore(notesEl, btnEl);
 
-  note.push(noteObj);
-  saveNote(note);
+  noteArr.push(noteObj);
+  saveNote(noteArr);
 }
 
 function createNote(id, content) {
@@ -33,7 +32,7 @@ function createNote(id, content) {
   });
 
   element.addEventListener('dblclick', () => {
-    let warning = confirm('do you want to delete notes?');
+    let warning = confirm('do you want to delete this note?');
     if (warning) {
       deleteNote(id, element);
     }
