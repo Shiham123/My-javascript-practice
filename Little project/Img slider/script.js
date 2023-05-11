@@ -1,36 +1,35 @@
 const nextIconEl = document.querySelector('.next'),
   prevIconEl = document.querySelector('.prev'),
-  imgEl = document.querySelectorAll('img'),
+  imgsEl = document.querySelectorAll('img'),
   imgContainerEl = document.querySelector('.image-container');
 
-let currentImg = 0;
-let timeOut;
+let imgCounter = 0;
+let slide;
 
 nextIconEl.addEventListener('click', () => {
-  currentImg++;
-  clearTimeout(timeOut);
+  imgCounter++;
+  clearTimeout(slide);
   updateImg();
 });
 
 prevIconEl.addEventListener('click', () => {
-  currentImg--;
-  clearTimeout(timeOut);
+  imgCounter--;
+  clearTimeout(slide);
   updateImg();
 });
 
-updateImg()
+updateImg();
 
 function updateImg() {
-  if (currentImg > imgEl.length) {
-    currentImg = 1;
-  } else if (currentImg < 1) {
-    currentImg = imgEl.length;
+  if (imgCounter > imgsEl.length - 1) {
+    imgCounter = 0;
+  } else if (imgCounter < 0) {
+    imgCounter = imgsEl.length - 1;
   }
+  imgContainerEl.style.transform = `translate(-${imgCounter * 500}px)`;
 
-  imgContainerEl.style.transform = `translate(-${(currentImg - 1) * 500}px)`;
-
-  timeOut = setTimeout(() => {
-    currentImg++;
+  slide = setTimeout(() => {
+    imgCounter++;
     updateImg();
-  }, 1000);
+  }, 3000);
 }
