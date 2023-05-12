@@ -15,30 +15,43 @@ let inputData = '',
   page = 1;
 
 async function createImages() {
-  inputData = searchInputEl.value;
+  try {
+    inputData = searchInputEl.value;
 
-  const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`,
-    response = await fetch(url),
-    data = await response.json();
+    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`,
+      response = await fetch(url),
+      data = await response.json();
 
-  let resultsData = data.results;
-  console.log(resultsData);
+    let resultsData = data.results;
 
-  resultsData.map((result) => {
-    const imageWrapper = document.createElement('div');
-    imageWrapper.classList.add('search-result');
+    resultsData.map((result) => {
+      const imageWrapper = document.createElement('div');
+      imageWrapper.classList.add('search-result');
 
-    const image = document.createElement('img');
-    image.src = result.urls.small;
-    image.alt = result.alt_description;
+      const image = document.createElement('img');
+      image.src = result.urls.small;
+      image.alt = result.alt_description;
 
-    const imageLink = document.createElement('a');
-    imageLink.href = result.links.html;
-    imageLink.target = '_blank';
-    imageLink.textContent = result.alt_description;
+      const imageLink = document.createElement('a');
+      imageLink.href = result.links.html;
+      imageLink.target = '_blank';
+      imageLink.textContent = result.alt_description;
 
-    imageWrapper.appendChild(image);
-    imageWrapper.appendChild(imageLink);
-    searchResultEl.appendChild(imageWrapper);
-  });
+      imageWrapper.appendChild(image);
+      imageWrapper.appendChild(imageLink);
+      searchResultEl.appendChild(imageWrapper);
+    });
+
+    page++;
+
+    if (page > 1) {
+      showMoreBtnEl.style.display = 'block';
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
+
+showMoreBtnEl.addEventListener('click', () => {
+  createImages();
+});
