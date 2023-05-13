@@ -15,27 +15,29 @@ async function showDictionary(word) {
   try {
     meaningContainerEl.style.display = 'none';
     infoTextEl.style.display = 'block';
-    infoTextEl.innerText = `Searching the meaning of ${word}`;
+    infoTextEl.innerText = `Searching the meaning of '${word}'`;
 
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
       response = await fetch(url).then((data) => data.json());
 
     if (response.title) {
-      meaningContainerEl.style.display = 'block';
       infoTextEl.style.display = 'none';
-      titleEl.innerText = `${word}`;
+      meaningContainerEl.style.display = 'block';
+
+      titleEl.innerText = response.title;
       meaningEl.innerText = 'N/A';
-      audioEl.style.display = 'none';
     } else {
-      meaningContainerEl.style.display = 'block';
       infoTextEl.style.display = 'none';
+      meaningContainerEl.style.display = 'block';
+
       titleEl.innerText = response[0].word;
       meaningEl.innerText = response[0].meanings[0].definitions[0].definition;
-      audioEl.style.display = 'inline-flex';
-      audioEl.innerText = response[0].phonetics[0].audio;
     }
   } catch (error) {
     console.log(error);
-    infoTextEl.innerText = `An error is pop-up, please refresh the page!`;
+    meaningContainerEl.style.display = 'none';
+
+    infoTextEl.style.display = 'block';
+    infoTextEl.innerText = `An error show up, please refresh the page!`;
   }
 }
