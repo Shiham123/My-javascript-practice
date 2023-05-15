@@ -2,11 +2,11 @@ const formEl = document.querySelector('.form'),
   inputEl = document.querySelector('.input'),
   ulEl = document.querySelector('.list');
 
-let list = JSON.parse(localStorage.getItem('list')) || [];
+let listArr = JSON.parse(localStorage.getItem('list'));
 
-if (list) {
-  list.forEach((task) => {
-    createTodoList(task);
+if (listArr) {
+  listArr.forEach((list) => {
+    createTodoList(list);
   });
 }
 
@@ -15,50 +15,52 @@ formEl.addEventListener('submit', (event) => {
   createTodoList();
 });
 
-function createTodoList(task) {
+function createTodoList(list) {
   let newTask = inputEl.value;
 
-  if (task) {
-    newTask = task.name;
+  if (list) {
+    newTask = list.name;
   }
 
   let liEl = document.createElement('li');
-  liEl.innerText = newTask;
+  liEl.innerHTML = newTask;
   ulEl.appendChild(liEl);
 
-  if (task && task.checked) {
+  if (list && list.checked) {
     liEl.classList.add('checked');
   }
+
   inputEl.value = '';
 
-  let checkBtnEl = document.createElement('div');
-  checkBtnEl.innerHTML = `<i class="fas fa-check-square"></i>`;
-  liEl.appendChild(checkBtnEl);
+  let checkIconEl = document.createElement('div');
+  checkIconEl.innerHTML = `<i class="fas fa-check-square"></i>`;
+  liEl.appendChild(checkIconEl);
 
-  let deleteBtnEl = document.createElement('div');
-  deleteBtnEl.innerHTML = `<i class="fas fa-trash"></i>`;
-  liEl.appendChild(deleteBtnEl);
+  let trashIconEl = document.createElement('div');
+  trashIconEl.innerHTML = `<i class="fas fa-trash"></i>`;
+  liEl.appendChild(trashIconEl);
 
-  checkBtnEl.addEventListener('click', () => {
+  checkIconEl.addEventListener('click', () => {
     liEl.classList.toggle('checked');
     updateLocalStorage();
   });
 
-  deleteBtnEl.addEventListener('click', () => {
+  trashIconEl.addEventListener('click', () => {
     liEl.remove();
     updateLocalStorage();
   });
+
   updateLocalStorage();
 }
 
 function updateLocalStorage() {
-  let liEls = document.querySelectorAll('li');
-  list = [];
-  liEls.forEach((liEl) => {
-    list.push({
-      name: liEl.innerText,
-      checked: liEl.classList.contains('checked'),
+  let listsEl = document.querySelectorAll('li');
+  listArr = [];
+  listsEl.forEach((element) => {
+    listArr.push({
+      name: element.innerText,
+      checked: element.classList.contains('checked'),
     });
   });
-  localStorage.setItem('list', JSON.stringify(list));
+  localStorage.setItem('list', JSON.stringify(listArr));
 }
