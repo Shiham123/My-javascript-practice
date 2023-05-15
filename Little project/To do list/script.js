@@ -4,18 +4,31 @@ const formEl = document.querySelector('.form'),
 
 let list = JSON.parse(localStorage.getItem('list')) || [];
 
+if (list) {
+  list.forEach((task) => {
+    createTodoList(task);
+  });
+}
+
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
   createTodoList();
 });
 
-function createTodoList() {
+function createTodoList(task) {
   let newTask = inputEl.value;
+
+  if (task) {
+    newTask = task.name;
+  }
 
   let liEl = document.createElement('li');
   liEl.innerText = newTask;
   ulEl.appendChild(liEl);
 
+  if (task && task.checked) {
+    liEl.classList.add('checked');
+  }
   inputEl.value = '';
 
   let checkBtnEl = document.createElement('div');
@@ -40,6 +53,7 @@ function createTodoList() {
 
 function updateLocalStorage() {
   let liEls = document.querySelectorAll('li');
+  list = [];
   liEls.forEach((liEl) => {
     list.push({
       name: liEl.innerText,
