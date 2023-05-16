@@ -2,11 +2,11 @@ const formEl = document.querySelector('.form'),
   inputEl = document.querySelector('.input'),
   ulEl = document.querySelector('.list');
 
-let listArr = JSON.parse(localStorage.getItem('list'));
+let listArr = JSON.parse(localStorage.getItem('todo')) || [];
 
 if (listArr) {
-  listArr.forEach((list) => {
-    createTodoList(list);
+  listArr.forEach((item) => {
+    createTodoList(item);
   });
 }
 
@@ -15,18 +15,17 @@ formEl.addEventListener('submit', (event) => {
   createTodoList();
 });
 
-function createTodoList(list) {
-  let newTask = inputEl.value;
+function createTodoList(task) {
+  let newTodo = inputEl.value;
 
-  if (list) {
-    newTask = list.name;
+  if (task) {
+    newTodo = task.name;
   }
 
   let liEl = document.createElement('li');
-  liEl.innerHTML = newTask;
-  ulEl.appendChild(liEl);
+  liEl.textContent = newTodo;
 
-  if (list && list.checked) {
+  if (task && task.checked) {
     liEl.classList.add('checked');
   }
 
@@ -34,10 +33,12 @@ function createTodoList(list) {
 
   let checkIconEl = document.createElement('div');
   checkIconEl.innerHTML = `<i class="fas fa-check-square"></i>`;
-  liEl.appendChild(checkIconEl);
 
   let trashIconEl = document.createElement('div');
   trashIconEl.innerHTML = `<i class="fas fa-trash"></i>`;
+
+  ulEl.appendChild(liEl);
+  liEl.appendChild(checkIconEl);
   liEl.appendChild(trashIconEl);
 
   checkIconEl.addEventListener('click', () => {
@@ -49,18 +50,19 @@ function createTodoList(list) {
     liEl.remove();
     updateLocalStorage();
   });
-
   updateLocalStorage();
 }
 
 function updateLocalStorage() {
-  let listsEl = document.querySelectorAll('li');
+  let allListEl = document.querySelectorAll('li');
+
   listArr = [];
-  listsEl.forEach((element) => {
+
+  allListEl.forEach((item) => {
     listArr.push({
-      name: element.innerText,
-      checked: element.classList.contains('checked'),
+      name: item.textContent,
+      checked: item.classList.contains('checked'),
     });
   });
-  localStorage.setItem('list', JSON.stringify(listArr));
+  localStorage.setItem('todo', JSON.stringify(listArr));
 }
