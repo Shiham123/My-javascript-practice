@@ -171,5 +171,11 @@ ul {
   top: 0;
   right: 0;
   z-index: 0;
-  opacity: 1;
+  /* opacity: 1; */
+}
+
+/* !home section style start here */
+
+.home .home-img img {
+  height: 400px;
 }
