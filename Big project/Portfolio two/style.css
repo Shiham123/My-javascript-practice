@@ -129,7 +129,13 @@ ul {
   transform: scale(1.05);
 }
 
-/* ! side bar section style start here */
+.shadow {
+  box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+
+/* !--------------------------- */
+/* side bar section style start here */
+/* ?--------------------------- */
 
 .aside {
   width: 270px;
@@ -473,4 +479,234 @@ ul {
 .about .about-content .education > h3,
 .experience > h3 {
   font-size: 40px;
+}
+
+.about .about-content .education .timeline-box {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.about .about-content .education .timeline-box > .timeline {
+  background-color: var(--bg-black-100);
+  padding: 30px 15px;
+  border: 1px solid var(--bg-black-50);
+  border-radius: 12px;
+  width: 100%;
+  position: relative;
+}
+
+.about .about-content .education .timeline-box > .timeline > .timeline-item {
+  position: relative;
+  padding-left: 37px;
+  padding-bottom: 50px;
+}
+
+.about
+  .about-content
+  .education
+  .timeline-box
+  > .timeline
+  > .timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.about
+  .about-content
+  .education
+  .timeline-box
+  .timeline
+  .timeline-item::before {
+  content: '';
+  width: 1px;
+  position: absolute;
+  height: 100%;
+  left: 7px;
+  top: 0;
+  background-color: var(--skin-color);
+}
+
+.about
+  .about-content
+  .education
+  .timeline-box
+  .timeline
+  .timeline-item
+  .circle-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: var(--skin-color);
+}
+
+.about
+  .about-content
+  .education
+  .timeline-box
+  .timeline
+  .timeline-item
+  .timeline-date {
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: var(--text-black-700);
+}
+
+.about
+  .about-content
+  .education
+  .timeline-box
+  .timeline
+  .timeline-item
+  .timeline-date
+  > i {
+  margin-right: 10px;
+}
+
+.about
+  .about-content
+  .education
+  .timeline-box
+  .timeline
+  .timeline-item
+  .timeline-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+  color: var(--text-black-900);
+}
+
+.about
+  .about-content
+  .education
+  .timeline-box
+  .timeline
+  .timeline-item
+  .timeline-text {
+  line-height: 25px;
+  font-size: 16px;
+  text-align: justify;
+  color: var(--text-black-700);
+}
+
+/* !experience */
+/* ?experience */
+
+.about .about-content .education > h3,
+.experience > h3 {
+  font-size: 40px;
+}
+
+.about .about-content .experience .timeline-box {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.about .about-content .experience .timeline-box > .timeline {
+  background-color: var(--bg-black-100);
+  padding: 30px 15px;
+  border: 1px solid var(--bg-black-50);
+  border-radius: 12px;
+  width: 100%;
+  position: relative;
+}
+
+.about .about-content .experience .timeline-box > .timeline > .timeline-item {
+  position: relative;
+  padding-left: 37px;
+  padding-bottom: 50px;
+}
+
+.about
+  .about-content
+  .experience
+  .timeline-box
+  > .timeline
+  > .timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.about
+  .about-content
+  .experience
+  .timeline-box
+  .timeline
+  .timeline-item::before {
+  content: '';
+  width: 1px;
+  position: absolute;
+  height: 100%;
+  left: 7px;
+  top: 0;
+  background-color: var(--skin-color);
+}
+
+.about
+  .about-content
+  .experience
+  .timeline-box
+  .timeline
+  .timeline-item
+  .circle-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: var(--skin-color);
+}
+
+.about
+  .about-content
+  .experience
+  .timeline-box
+  .timeline
+  .timeline-item
+  .timeline-date {
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: var(--text-black-700);
+}
+
+.about
+  .about-content
+  .experience
+  .timeline-box
+  .timeline
+  .timeline-item
+  .timeline-date
+  > i {
+  margin-right: 10px;
+}
+
+.about
+  .about-content
+  .experience
+  .timeline-box
+  .timeline
+  .timeline-item
+  .timeline-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+  color: var(--text-black-900);
+}
+
+.about
+  .about-content
+  .experience
+  .timeline-box
+  .timeline
+  .timeline-item
+  .timeline-text {
+  line-height: 25px;
+  font-size: 16px;
+  text-align: justify;
+  color: var(--text-black-700);
 }
