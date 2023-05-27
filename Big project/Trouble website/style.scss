@@ -16,13 +16,16 @@ body {
 
 .navbar {
   padding: 30px 0px 30px 0px;
-  .container {
+  .container:first-child {
     display: flex;
     justify-content: space-around;
 
     .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       .navbar-item {
-        display: flex;
         a {
           padding: 0px 30px;
           color: var(--text-white);
@@ -36,6 +39,39 @@ body {
           letter-spacing: 0px;
           text-align: center;
         }
+      }
+
+      .navbar-button {
+        button {
+          padding: 15px 30px;
+          background-color: transparent;
+          border: 1px solid var(--text-white);
+          color: var(--text-white);
+          font: normal normal 300 14px/21px 'Poppins';
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .container:last-child {
+    margin: 400px 0px;
+    .row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        color: var(--text-white);
+        font: normal normal 700 72px/78px 'Poppins';
+        text-align: center;
+      }
+
+      h6 {
+        color: var(--text-white);
+        padding: 20px 0px;
+        font: normal normal 300 18px/28px 'Poppins';
+        text-align: center;
       }
     }
   }

@@ -18,14 +18,16 @@ body {
 .navbar {
   padding: 30px 0px 30px 0px;
 }
-.navbar .container {
+.navbar .container:first-child {
   display: flex;
   justify-content: space-around;
 }
-.navbar .container .row .navbar-item {
+.navbar .container:first-child .row {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.navbar .container .row .navbar-item a {
+.navbar .container:first-child .row .navbar-item a {
   padding: 0px 30px;
   color: var(--text-white);
   font-weight: 300;
@@ -36,5 +38,33 @@ body {
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0px;
+  text-align: center;
+}
+.navbar .container:first-child .row .navbar-button button {
+  padding: 15px 30px;
+  background-color: transparent;
+  border: 1px solid var(--text-white);
+  color: var(--text-white);
+  font: normal normal 300 14px/21px "Poppins";
+  cursor: pointer;
+}
+.navbar .container:last-child {
+  margin: 400px 0px;
+}
+.navbar .container:last-child .row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.navbar .container:last-child .row h1 {
+  color: var(--text-white);
+  font: normal normal 700 72px/78px "Poppins";
+  text-align: center;
+}
+.navbar .container:last-child .row h6 {
+  color: var(--text-white);
+  padding: 20px 0px;
+  font: normal normal 300 18px/28px "Poppins";
   text-align: center;
 }/*# sourceMappingURL=style.css.map */
