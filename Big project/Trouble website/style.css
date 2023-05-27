@@ -1,0 +1,6 @@
+.main-container {
+  background-image: url(Img/image.jpg);
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
