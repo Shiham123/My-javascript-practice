@@ -1,7 +1,42 @@
+:root {
+  --text-white: #ffffff;
+  --text-black: #000000;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   border: none;
   outline: none;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+  padding: 30px 0px 30px 0px;
+  .container {
+    display: flex;
+    justify-content: space-around;
+
+    .row {
+      .navbar-item {
+        display: flex;
+        a {
+          padding: 0px 30px;
+          color: var(--text-white);
+          font-weight: 300;
+          font-family: 'Poppins', sans-serif;
+          cursor: pointer;
+          text-decoration: none;
+          text-transform: capitalize;
+          font-size: 14px;
+          line-height: 21px;
+          letter-spacing: 0px;
+          text-align: center;
+        }
+      }
+    }
+  }
 }
