@@ -39,6 +39,23 @@ body {
   line-height: 21px;
   letter-spacing: 0px;
   text-align: center;
+  position: relative;
+}
+.navbar .container:first-child .row .navbar-item a p {
+  display: inline-block;
+}
+.navbar .container:first-child .row .navbar-item a ul {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  border: 1px solid var(--text-white);
+  border-radius: 12px;
+}
+.navbar .container:first-child .row .navbar-item a ul li {
+  font: normal normal 300 14px/21px "Poppins";
+  list-style: none;
+  padding: 5px 5px;
 }
 .navbar .container:first-child .row .navbar-button button {
   padding: 15px 30px;
@@ -46,6 +63,7 @@ body {
   border: 1px solid var(--text-white);
   color: var(--text-white);
   font: normal normal 300 14px/21px "Poppins";
+  border-radius: 12px;
   cursor: pointer;
 }
 .navbar .container:last-child {

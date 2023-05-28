@@ -5,3 +5,11 @@
   background-size: cover;
   background-position: center;
 }
+
+.list-item {
+  display: none !important;
+}
+
+.list-item.active {
+  display: block !important;
+}
