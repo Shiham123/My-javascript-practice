@@ -69,20 +69,53 @@ body {
 .navbar .container:last-child {
   margin: 400px 0px;
 }
-.navbar .container:last-child .row {
+.navbar .container:last-child .row:nth-child(1) {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.navbar .container:last-child .row h1 {
+.navbar .container:last-child .row:nth-child(1) h1 {
   color: var(--text-white);
   font: normal normal 700 72px/78px "Poppins";
   text-align: center;
 }
-.navbar .container:last-child .row h6 {
+.navbar .container:last-child .row:nth-child(1) h6 {
   color: var(--text-white);
   padding: 20px 0px;
   font: normal normal 300 18px/28px "Poppins";
   text-align: center;
+}
+.navbar .container:last-child .row:nth-child(2) .input-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0px;
+}
+.navbar .container:last-child .row:nth-child(2) .input-field input {
+  padding: 30px 60px;
+  border-radius: 12px;
+}
+.navbar .container:last-child .row:nth-child(2) .input-field input::-moz-placeholder {
+  font: normal normal 300 13px/28px "Poppins";
+}
+.navbar .container:last-child .row:nth-child(2) .input-field input::placeholder {
+  font: normal normal 300 13px/28px "Poppins";
+}
+.navbar .container:last-child .row:nth-child(2) .input-field i {
+  z-index: 1;
+  margin-right: -35px;
+  color: var(--text-black);
+  opacity: 0.5;
+}
+.navbar .container:last-child .row:nth-child(2) .input-field .search-button {
+  padding-left: 10px;
+}
+.navbar .container:last-child .row:nth-child(2) .input-field .search-button button {
+  padding: 24px 40px;
+  border-radius: 12px;
+  background-color: rgb(99, 99, 204);
+  font: normal normal 18px/28px "Poppins";
+  color: var(--text-white);
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
