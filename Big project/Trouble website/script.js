@@ -23,3 +23,8 @@ navItemThreeEl.addEventListener('click', () => {
 navItemFourEl.addEventListener('click', () => {
   itemFourEl.classList.toggle('active');
 });
+
+const submitBtnEl = document.getElementById('submit-btn'),
+  destinationInputEl = document.getElementById('destination-input'),
+  locationInputEl = document.getElementById('location-input'),
+  personInputEl = document.getElementById('person-input');
