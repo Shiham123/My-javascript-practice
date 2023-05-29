@@ -24,7 +24,33 @@ navItemFourEl.addEventListener('click', () => {
   itemFourEl.classList.toggle('active');
 });
 
+// ?------------------------------------------------------------
+// ?------------------------------------------------------------
+// ?------------------------------------------------------------
+
 const submitBtnEl = document.getElementById('submit-btn'),
   destinationInputEl = document.getElementById('destination-input'),
   locationInputEl = document.getElementById('location-input'),
   personInputEl = document.getElementById('person-input');
+
+let storeData = [];
+
+function updateLocalStorage() {
+  let destinationValue = destinationInputEl.value,
+    locationValue = locationInputEl.value,
+    personValue = personInputEl.value;
+
+  storeData.push({
+    name: destinationValue,
+    city: locationValue,
+    person: personValue,
+  });
+  localStorage.setItem('data', JSON.stringify(storeData));
+}
+
+submitBtnEl.addEventListener('click', (element) => {
+  updateLocalStorage();
+  destinationInputEl.value = '';
+  locationInputEl.value = '';
+  personInputEl.value = '';
+});
