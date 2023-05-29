@@ -62,17 +62,26 @@ submitBtnEl.addEventListener('click', (element) => {
 const aboutSliderEl = document.querySelector('.about-slider'),
   itemEl = document.querySelectorAll('.item'),
   leftIconEl = document.querySelector('#left-arrow'),
-  rightIconEl = document.querySelector('#right-arrow');
+  rightIconEl = document.querySelector('#right-arrow'),
+  firstChildEl = document.querySelector('#first-child');
 
 let count = 0;
 
 leftIconEl.addEventListener('click', () => {
   count++;
   updateSlider();
+  if (count > 2) {
+    count = 0;
+    firstChildEl.style.marginLeft = `-50px`;
+  }
 });
 
 rightIconEl.addEventListener('click', () => {
   count--;
+  if (count < -5) {
+    count = 0;
+    firstChildEl.style.marginLeft = `250px`;
+  }
   updateSlider();
 });
 
