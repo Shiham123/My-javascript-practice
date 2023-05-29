@@ -54,3 +54,28 @@ submitBtnEl.addEventListener('click', (element) => {
   locationInputEl.value = '';
   personInputEl.value = '';
 });
+
+// ?------------------------------------------------------------
+// ?------------------------------------------------------------
+// ?------------------------------------------------------------
+
+const aboutSliderEl = document.querySelector('.about-slider'),
+  itemEl = document.querySelectorAll('.item'),
+  leftIconEl = document.querySelector('#left-arrow'),
+  rightIconEl = document.querySelector('#right-arrow');
+
+let count = 0;
+
+leftIconEl.addEventListener('click', () => {
+  count++;
+  updateSlider();
+});
+
+rightIconEl.addEventListener('click', () => {
+  count--;
+  updateSlider();
+});
+
+function updateSlider() {
+  aboutSliderEl.style.transform = `translateX(${count * 300}px)`;
+}

@@ -27,17 +27,3 @@
   border-radius: 50%;
   background-color: white;
 }
-
-.hide-details {
-  display: none;
-}
-
-.about-slider {
-  position: relative;
-}
-
-.slider-icon {
-  position: absolute;
-  bottom: 10px;
-  right: 500px;
-}

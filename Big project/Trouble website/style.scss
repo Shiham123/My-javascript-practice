@@ -228,8 +228,10 @@
     .row:nth-child(2) {
       .about-slider {
         display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+        justify-content: left;
+        align-items: top;
+        gap: 30px;
+        transition: all 0.4s ease;
 
         .item {
           margin-top: 30px;
@@ -247,20 +249,21 @@
             }
           }
         }
-        .slider-icon {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 40px;
+      }
+      .slider-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        margin-top: 50px;
 
-          i {
-            background-color: white;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            padding: 30px 30px;
-            color: var(--text-black-one);
-            border-radius: 50%;
-            cursor: pointer;
-          }
+        i {
+          background-color: white;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          padding: 30px 30px;
+          color: var(--text-black-one);
+          border-radius: 50%;
+          cursor: pointer;
         }
       }
     }
