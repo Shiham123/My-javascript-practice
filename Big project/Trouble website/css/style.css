@@ -142,8 +142,9 @@
 }
 .provide-section .container .row:nth-child(2) .header-item {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  gap: 70px;
 }
 .provide-section .container .row:nth-child(2) .header-item .item {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -165,4 +166,64 @@
 .provide-section .container .row:nth-child(2) .header-item .item .details p {
   font: normal normal 400 16px/26px "Poppins";
   color: var(--text-black-two);
+}
+
+.about-section {
+  margin: 300px 0px;
+}
+.about-section .container .row:nth-child(1) .header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.about-section .container .row:nth-child(1) .header h1 {
+  font: normal normal 700 40px/52px "Poppins";
+  position: relative;
+  color: var(--text-black-one);
+}
+.about-section .container .row:nth-child(1) .header h1::before {
+  content: "ABOUT US";
+  position: absolute;
+  top: -35px;
+  left: 0px;
+  color: #4141a5;
+  font: normal normal 600 16px/24px "Poppins";
+}
+.about-section .container .row:nth-child(1) .header p {
+  color: var(--text-black-two);
+  font: normal normal 400 16px/28px "Poppins";
+}
+.about-section .container .row:nth-child(2) .about-slider {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.about-section .container .row:nth-child(2) .about-slider .item {
+  margin-top: 30px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.about-section .container .row:nth-child(2) .about-slider .item .details {
+  padding: 70px 30px;
+}
+.about-section .container .row:nth-child(2) .about-slider .item .details h1 {
+  font: normal normal 600 30px/45px "Poppins";
+}
+.about-section .container .row:nth-child(2) .about-slider .item .details p {
+  font: normal normal 400 16px/28px "Poppins";
+}
+.about-section .container .row:nth-child(2) .about-slider .slider-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.about-section .container .row:nth-child(2) .about-slider .slider-icon i {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 30px 30px;
+  color: var(--text-black-one);
+  border-radius: 50%;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

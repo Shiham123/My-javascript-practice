@@ -13,3 +13,31 @@
 .list-item.active {
   display: block !important;
 }
+
+.about-slider > .item > .details {
+  position: relative;
+}
+
+.about-slider > .item > .details::before {
+  content: url(Img/quote.png);
+  position: absolute;
+  top: -50px;
+  left: 10;
+  padding: 30px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.hide-details {
+  display: none;
+}
+
+.about-slider {
+  position: relative;
+}
+
+.slider-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 500px;
+}
