@@ -1,8 +1,9 @@
 :root {
-  --text-white: #ffffff;
+  --text-white: #e9ebf3;
   --text-black: #000000;
   --text-black-one: #1e2a39;
   --text-black-two: #5c6272;
+  --border: 1px solid black;
 }
 * {
   margin: 0;
@@ -447,19 +448,45 @@ body {
     .row:nth-child(2) {
       .cites {
         display: flex;
+        justify-content: center;
+        align-items: center;
         gap: 30px;
 
         .item {
-          display: flex;
+          width: 350px;
+          height: 500px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          border-radius: 12px;
+          position: relative;
 
-          .img {
-            width: 300px;
-            height: 400px;
+          .item-header {
+            display: inline-block;
+            margin: 30px 20px;
+            h1 {
+              background-color: rgba(255, 255, 255, 0.205);
+              color: var(--text-white);
+              font: normal normal 600 20px/20px 'Poppins';
+              padding: 10px 20px;
+              border-radius: 50px;
+            }
+          }
 
-            img {
-              width: 100%;
-              height: 100%;
-              background-size: cover;
+          .item-footer {
+            position: absolute;
+            bottom: 50px;
+            left: 30px;
+
+            h1 {
+              font: normal normal 700 34px/34px 'Poppins';
+              color: var(--text-white);
+            }
+
+            p {
+              margin-top: 10px;
+              font: normal normal 500 16px/16px 'Poppins';
+              color: var(--text-white);
             }
           }
         }
