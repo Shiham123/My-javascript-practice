@@ -88,3 +88,10 @@ rightIconEl.addEventListener('click', () => {
 function updateSlider() {
   aboutSliderEl.style.transform = `translateX(${count * 300}px)`;
 }
+
+// ?------------------------------------------------------------
+// ?------------------------------------------------------------
+// ?------------------------------------------------------------
+
+const sitesLeftIconEl = document.querySelector('#partner-left-icon'),
+  sitesRightIconEl = document.querySelector('#partner-right-icon');
