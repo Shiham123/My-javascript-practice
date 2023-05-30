@@ -15,6 +15,7 @@
 
 body {
   overflow-x: hidden;
+  background-color: #f5f6f8;
 }
 
 .navbar {
@@ -303,4 +304,36 @@ body {
 .featured-section .container .row:nth-child(2) .featured-item .item .details p {
   color: #ee6d52;
   font: normal normal 600 16px/16px "Poppins";
+}
+
+.partner-section {
+  margin: 200px 0px;
+}
+.partner-section .container .row:nth-child(1) .partner-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.partner-section .container .row:nth-child(1) .partner-header h1 {
+  color: var(--text-black-one);
+  font: normal normal 700 45px/58px "Poppins";
+}
+.partner-section .container .row:nth-child(1) .partner-header p {
+  padding: 30px 0px;
+  text-align: center;
+  color: var(--text-black-two);
+  font: normal normal 400 16px/28px "Poppins";
+}
+.partner-section .container .row:nth-child(2) {
+  margin: 100px 0px;
+}
+.partner-section .container .row:nth-child(2) .partner-logo .img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
 }/*# sourceMappingURL=style.css.map */
