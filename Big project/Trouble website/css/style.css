@@ -378,11 +378,18 @@ body {
   color: var(--text-black-one);
   cursor: pointer;
 }
+.popular-cites .container .row:nth-child(2) {
+  width: 200vw;
+}
 .popular-cites .container .row:nth-child(2) .cites {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   gap: 30px;
+  transition: all 0.4s ease;
+}
+.popular-cites .container .row:nth-child(2) .cites .item:first-child {
+  margin-left: 330px;
 }
 .popular-cites .container .row:nth-child(2) .cites .item {
   width: 350px;

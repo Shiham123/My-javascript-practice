@@ -446,11 +446,22 @@ body {
     }
 
     .row:nth-child(2) {
+      width: 200vw;
+
       .cites {
         display: flex;
-        justify-content: center;
+        justify-content: left;
         align-items: center;
         gap: 30px;
+        transition: all 0.4s ease;
+
+        .item:first-child {
+          margin-left: 330px;
+        }
+
+        // .item:last-child {
+        //   margin-right: -1550px;
+        // }
 
         .item {
           width: 350px;

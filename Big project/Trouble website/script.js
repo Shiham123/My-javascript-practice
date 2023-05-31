@@ -93,5 +93,28 @@ function updateSlider() {
 // ?------------------------------------------------------------
 // ?------------------------------------------------------------
 
-const sitesLeftIconEl = document.querySelector('#partner-left-icon'),
-  sitesRightIconEl = document.querySelector('#partner-right-icon');
+const cityLeftIconEl = document.querySelector('#partner-left-icon'),
+  cityRightIconEl = document.querySelector('#partner-right-icon'),
+  citesEl = document.querySelector('#cites');
+
+let citesCount = 0;
+
+cityRightIconEl.addEventListener('click', () => {
+  citesCount++;
+  if (citesCount > 3) {
+    citesCount = 0;
+  }
+  updateCitesSlider();
+});
+
+cityLeftIconEl.addEventListener('click', () => {
+  citesCount--;
+  if (citesCount < -7) {
+    citesCount = 0;
+  }
+  updateCitesSlider();
+});
+
+function updateCitesSlider() {
+  citesEl.style.transform = `translate(${citesCount * 350}px)`;
+}
